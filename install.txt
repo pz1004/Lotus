@@ -26,6 +26,9 @@ pip install torchvision==0.15.1 torchaudio==2.0.1
  - xformers requires torch 2.0.0.
  - torchvision==0.15.1 torchaudio==2.0.1 are compatible versions for torch 2.0.0
 
+[Complete stack trace]
+export HYDRA_FULL_ERROR=1
+
 
 conda create -n lotus python=3.9.19
 conda activate lotus

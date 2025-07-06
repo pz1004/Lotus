@@ -1,0 +1,2482 @@
+(lotus) pz1004@pz1004-5:~/Workspaces/Lotus/lotus$ ./script/skill_policy_libero_goal.sh
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/pz1004/Workspaces/robosuite-v141/robosuite/scripts/setup_macros.py (macros.py:55)
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(torch.__version__) < LooseVersion("1.0.0"):
+{ 'bddl_folder': './libero/bddl_files',
+  'benchmark_name': 'libero_goal_exp6',
+  'data': { 'action_scale': 1.0,
+            'affine_translate': 4,
+            'data_modality': ['image', 'proprio'],
+            'frame_stack': 1,
+            'img_h': 128,
+            'img_w': 128,
+            'max_word_len': 25,
+            'num_kp': 64,
+            'obs': { 'modality': { 'depth': [],
+                                   'low_dim': [ 'gripper_states',
+                                                'joint_states'],
+                                   'rgb': [ 'agentview_rgb',
+                                            'eye_in_hand_rgb']}},
+            'obs_key_mapping': { 'agentview_rgb': 'agentview_image',
+                                 'eye_in_hand_rgb': 'robot0_eye_in_hand_image',
+                                 'gripper_states': 'robot0_gripper_qpos',
+                                 'joint_states': 'robot0_joint_pos'},
+            'seq_len': 10,
+            'shuffle_task': False,
+            'state_dim': None,
+            'task_group_size': 1,
+            'task_order_index': 0,
+            'train_dataset_ratio': 0.8,
+            'use_ee': False,
+            'use_eye_in_hand': True,
+            'use_gripper': True,
+            'use_joint': True},
+  'device': 'cuda',
+  'eval': { 'batch_size': 64,
+            'eval': True,
+            'eval_every': 5,
+            'load_path': '',
+            'max_steps': 600,
+            'n_eval': 20,
+            'num_procs': 20,
+            'num_workers': 4,
+            'save_sim_states': False,
+            'use_mp': True},
+  'exp': 'BUDS-single-pretrain6',
+  'folder': './datasets',
+  'goal_modality': 'BUDS',
+  'init_states_folder': './libero/init_files',
+  'lifelong': {'algo': 'Multitask_Skill', 'eval_in_train': True},
+  'load_previous_model': False,
+  'meta': { 'color_aug': { 'network': 'BatchWiseImgColorJitterAug',
+                           'network_kwargs': { 'brightness': 0.3,
+                                               'contrast': 0.3,
+                                               'epsilon': 0.1,
+                                               'hue': 0.3,
+                                               'input_shape': None,
+                                               'saturation': 0.3}},
+            'embed_size': 64,
+            'extra_hidden_size': 128,
+            'extra_num_layers': 0,
+            'image_encoder': { 'network': 'ResnetEncoder',
+                               'network_kwargs': { 'freeze': False,
+                                                   'language_fusion': 'film',
+                                                   'no_stride': False,
+                                                   'pretrained': False,
+                                                   'remove_layer_num': 4}},
+            'language_encoder': { 'network': 'MLPEncoder',
+                                  'network_kwargs': { 'hidden_size': 128,
+                                                      'input_size': 768,
+                                                      'num_layers': 1,
+                                                      'output_size': 128}},
+            'policy_head': { 'loss_kwargs': {'loss_coef': 1.0},
+                             'network': 'GMMHead',
+                             'network_kwargs': { 'activation': 'softplus',
+                                                 'hidden_size': 1024,
+                                                 'low_eval_noise': False,
+                                                 'min_std': 0.0001,
+                                                 'num_layers': 2,
+                                                 'num_modes': 5}},
+            'policy_type': 'BCTransformerPolicy',
+            'temporal_position_encoding': { 'network': 'SinusoidalPositionEncoding',
+                                            'network_kwargs': { 'factor_ratio': None,
+                                                                'input_size': None,
+                                                                'inv_freq_factor': 10}},
+            'transformer_dropout': 0.1,
+            'transformer_head_output_size': 64,
+            'transformer_input_size': None,
+            'transformer_max_seq_len': 10,
+            'transformer_mlp_hidden_size': 256,
+            'transformer_num_heads': 6,
+            'transformer_num_layers': 4,
+            'translation_aug': { 'network': 'TranslationAug',
+                                 'network_kwargs': { 'input_shape': None,
+                                                     'translation': 8}}},
+  'policy': { 'color_aug': { 'network': 'BatchWiseImgColorJitterAug',
+                             'network_kwargs': { 'brightness': 0.3,
+                                                 'contrast': 0.3,
+                                                 'epsilon': 0.1,
+                                                 'hue': 0.3,
+                                                 'input_shape': None,
+                                                 'saturation': 0.3}},
+              'embed_size': 64,
+              'extra_hidden_size': 128,
+              'extra_num_layers': 0,
+              'image_encoder': { 'network': 'ResnetEncoder',
+                                 'network_kwargs': { 'freeze': False,
+                                                     'language_fusion': 'film',
+                                                     'no_stride': False,
+                                                     'pretrained': False,
+                                                     'remove_layer_num': 4}},
+              'language_encoder': { 'network': 'MLPEncoder',
+                                    'network_kwargs': { 'hidden_size': 128,
+                                                        'input_size': 768,
+                                                        'num_layers': 1,
+                                                        'output_size': 128}},
+              'policy_head': { 'loss_kwargs': {'loss_coef': 1.0},
+                               'network': 'GMMHead',
+                               'network_kwargs': { 'activation': 'softplus',
+                                                   'hidden_size': 1024,
+                                                   'low_eval_noise': False,
+                                                   'min_std': 0.0001,
+                                                   'num_layers': 2,
+                                                   'num_modes': 5}},
+              'policy_type': 'BCTransformerPolicy',
+              'temporal_position_encoding': { 'network': 'SinusoidalPositionEncoding',
+                                              'network_kwargs': { 'factor_ratio': None,
+                                                                  'input_size': None,
+                                                                  'inv_freq_factor': 10}},
+              'transformer_dropout': 0.1,
+              'transformer_head_output_size': 64,
+              'transformer_input_size': None,
+              'transformer_max_seq_len': 10,
+              'transformer_mlp_hidden_size': 256,
+              'transformer_num_heads': 6,
+              'transformer_num_layers': 4,
+              'translation_aug': { 'network': 'TranslationAug',
+                                   'network_kwargs': { 'input_shape': None,
+                                                       'translation': 8}}},
+  'pretrain': False,
+  'pretrain_model_path': '',
+  'seed': 1,
+  'skill_learning': { 'agglomoration': { 'K': 5,
+                                         'affinity': 'rbf',
+                                         'agglomoration_step': 10,
+                                         'dist': 'l2',
+                                         'footprint': 'mean',
+                                         'min_len_thresh': 20,
+                                         'scale': 0.05,
+                                         'segment_footprint': 'concat_1',
+                                         'segment_scale': 2,
+                                         'visualization': False},
+                      'eval': {'meta_freq': 5},
+                      'exp_name': 'dinov2_libero_goal_image_only_6',
+                      'folder': './',
+                      'hydra': {'run': {'dir': '.'}},
+                      'meta': { 'activation': 'leaky-relu',
+                                'affine_translate': 4,
+                                'batch_size': 100,
+                                'embedding_layer_dims': [300, 400],
+                                'id_layer_dims': [300, 400],
+                                'img_h': 128,
+                                'img_w': 128,
+                                'lr': 0.0001,
+                                'num_epochs': 1001,
+                                'num_kp': 64,
+                                'num_workers': 0,
+                                'random_affine': False,
+                                'rnn_hidden_dim': 100,
+                                'rnn_num_layers': 2,
+                                'separate_id_prediction': False,
+                                'use_cvae': True,
+                                'use_eye_in_hand': False,
+                                'use_rnn': False,
+                                'use_spatial_softmax': False,
+                                'visual_feature_dimension': 64},
+                      'meta_cvae_cfg': { 'enable': True,
+                                         'kl_coeff': 0.01,
+                                         'latent_dim': 64},
+                      'modality_str': 'dinov2_agentview_eye_in_hand',
+                      'multitask': { 'skip_task_id': [5, 6, 8],
+                                     'task_id': 0,
+                                     'testing_percentage': 1.0,
+                                     'training_task_id': -1},
+                      'record_states': True,
+                      'repr': { 'alpha_kl': 0.05,
+                                'modalities': [ 'agentview',
+                                                'eye_in_hand',
+                                                'proprio'],
+                                'no_skip': True,
+                                'z_dim': 32},
+                      'skill_subgoal_cfg': { 'horizon': 30,
+                                             'subgoal_type': 'linear',
+                                             'use_eye_in_hand': False,
+                                             'use_final_goal': False,
+                                             'use_spatial_softmax': True,
+                                             'visual_feature_dimension': 32},
+                      'skill_training': { 'action_squash': True,
+                                          'activation': 'leaky-relu',
+                                          'affine_translate': 4,
+                                          'agglomoration': {'K': 5},
+                                          'batch_size': 128,
+                                          'data_modality': ['image', 'proprio'],
+                                          'gripper_smoothing': False,
+                                          'img_h': 128,
+                                          'img_w': 128,
+                                          'lr': 0.001,
+                                          'min_lr': 0.0001,
+                                          'no_skip': True,
+                                          'num_epochs': 1001,
+                                          'num_kp': 64,
+                                          'num_workers': 0,
+                                          'policy_layer_dims': [300, 400],
+                                          'policy_type': 'normal_subgoal',
+                                          'random_affine': True,
+                                          'rnn_encoder_mlp_dims': [128, 128],
+                                          'rnn_hidden_dim': 100,
+                                          'rnn_loss_reduction': 'mean',
+                                          'rnn_num_layers': 2,
+                                          'run_idx': 0,
+                                          'state_dim': 37,
+                                          'subtask_id': [],
+                                          'use_changepoint': False,
+                                          'use_eye_in_hand': True,
+                                          'use_gripper': True,
+                                          'use_joints': True,
+                                          'use_rnn': False,
+                                          'visual_feature_dimension': 64},
+                      'use_checkpoint': False,
+                      'verbose': True,
+                      'video': { 'demo_output_dir': 'paper_vis/demo_videos/defaults',
+                                 'dir': '',
+                                 'fps': 60,
+                                 'height': 1024,
+                                 'output_dir': 'paper_vis/videos/defaults',
+                                 'width': 1024}},
+  'task_embedding_format': 'bert',
+  'task_embedding_one_hot_offset': 1,
+  'train': { 'batch_size': 32,
+             'debug': False,
+             'grad_clip': 100.0,
+             'loss_scale': 1.0,
+             'n_epochs': 50,
+             'num_workers': 4,
+             'optimizer': { 'kwargs': { 'betas': [0.9, 0.999],
+                                        'lr': 0.0001,
+                                        'weight_decay': 0.0001},
+                            'name': 'torch.optim.AdamW'},
+             'resume': False,
+             'resume_path': '',
+             'scheduler': { 'kwargs': {'eta_min': 1e-05, 'last_epoch': -1},
+                            'name': 'torch.optim.lr_scheduler.CosineAnnealingLR'},
+             'use_augmentation': True},
+  'use_wandb': True,
+  'wandb_project': 'lifelong learning'}
+'Available algorithms:'
+{ 'agem': <class 'lotus.lifelong.algos.agem.AGEM'>,
+  'er': <class 'lotus.lifelong.algos.er.ER'>,
+  'ewc': <class 'lotus.lifelong.algos.ewc.EWC'>,
+  'metacontroller': <class 'lotus.lifelong.algos.skill.MetaController'>,
+  'multitask': <class 'lotus.lifelong.algos.multitask.Multitask'>,
+  'packnet': <class 'lotus.lifelong.algos.packnet.PackNet'>,
+  'sequential': <class 'lotus.lifelong.algos.base.Sequential'>,
+  'singletask': <class 'lotus.lifelong.algos.single_task.SingleTask'>,
+  'subskill': <class 'lotus.lifelong.algos.skill.SubSkill'>}
+'Available policies:'
+{ 'bcrnnpolicy': <class 'lotus.lifelong.models.bc_rnn_policy.BCRNNPolicy'>,
+  'bctransformerpolicy': <class 'lotus.lifelong.models.bc_transformer_policy.BCTransformerPolicy'>,
+  'bctransformerskillpolicy': <class 'lotus.lifelong.models.bc_transformer_policy.BCTransformerSkillPolicy'>,
+  'bcviltpolicy': <class 'lotus.lifelong.models.bc_vilt_policy.BCViLTPolicy'>}
+[info] using task orders [0, 1, 2, 3, 4, 5]
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: rgb with keys: ['eye_in_hand_rgb', 'agentview_rgb']
+using obs modality: depth with keys: []
+using obs modality: low_dim with keys: ['joint_states', 'gripper_states']
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 2976.58it/s]
+./datasets/libero_goal/open_the_middle_drawer_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3488.33it/s]
+./datasets/libero_goal/put_the_bowl_on_the_stove_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3805.74it/s]
+./datasets/libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3757.26it/s]
+./datasets/libero_goal/open_the_top_drawer_and_put_the_bowl_inside_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3702.86it/s]
+./datasets/libero_goal/put_the_bowl_on_top_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3829.16it/s]
+./datasets/libero_goal/push_the_plate_to_the_front_of_the_stove_demo.hdf5
+subtasks distance score: 0.0
+subtasks distance score: 0.5371428571428571
+subtasks distance score: 0.0
+subtasks distance score: 0.48244897959183675
+subtasks distance score: 0.5428571428571428
+subtasks distance score: 0.0
+train_dataset_id: [0, 1]
+
+=================== Lifelong Benchmark Information  ===================
+ Name: libero_goal
+ # Tasks: 6
+    - Task 1:
+        open the middle drawer of the cabinet
+    - Task 2:
+        put the bowl on the stove
+    - Task 3:
+        put the wine bottle on top of the cabinet
+    - Task 4:
+        open the top drawer and put the bowl inside
+    - Task 5:
+        put the bowl on top of the cabinet
+    - Task 6:
+        push the plate to the front of the stove
+=======================================================================
+
+wandb: Currently logged in as: pz1004. Use `wandb login --relogin` to force relogin
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/wandb/util.py:249: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  scope.user = {"email": s.email}
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/wandb/util.py:249: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  scope.user = {"email": s.email}
+wandb: wandb version 0.21.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.13.1
+wandb: Run data is saved locally in /home/pz1004/Workspaces/Lotus/lotus/wandb/run-20250703_000604-8ppli19e
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dulcet-serenity-6
+wandb: ⭐️ View project at https://wandb.ai/pz1004/lifelong%20learning
+wandb: 🚀 View run at https://wandb.ai/pz1004/lifelong%20learning/runs/8ppli19e
+Finish loading subtask_0:  262
+Subtask id: 0
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3483.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[info] start training skill 0
+[info] Epoch:   0 | train loss:  5.54 | time: 0.03
+[info] Epoch:   1 | train loss:  3.95 | time: 0.05
+[info] Epoch:   2 | train loss:  0.53 | time: 0.05
+[info] Epoch:   3 | train loss: -0.70 | time: 0.04
+[info] Epoch:   4 | train loss: -1.89 | time: 0.05
+[info] Epoch:   5 | train loss: -2.27 | time: 0.04
+[info] Epoch:   6 | train loss: -3.72 | time: 0.05
+[info] Epoch:   7 | train loss: -3.50 | time: 0.05
+[info] Epoch:   8 | train loss: -3.58 | time: 0.05
+[info] Epoch:   9 | train loss: -3.18 | time: 0.04
+[info] Epoch:  10 | train loss: -5.17 | time: 0.05
+[info] Epoch:  11 | train loss: -6.63 | time: 0.05
+[info] Epoch:  12 | train loss: -8.32 | time: 0.05
+[info] Epoch:  13 | train loss: -8.93 | time: 0.05
+[info] Epoch:  14 | train loss: -10.06 | time: 0.05
+[info] Epoch:  15 | train loss: -10.90 | time: 0.04
+[info] Epoch:  16 | train loss: -10.80 | time: 0.04
+[info] Epoch:  17 | train loss: -10.46 | time: 0.05
+[info] Epoch:  18 | train loss: -11.01 | time: 0.05
+[info] Epoch:  19 | train loss: -11.24 | time: 0.05
+[info] Epoch:  20 | train loss: -11.35 | time: 0.05
+[info] Epoch:  21 | train loss: -11.63 | time: 0.05
+[info] Epoch:  22 | train loss: -11.96 | time: 0.05
+[info] Epoch:  23 | train loss: -12.01 | time: 0.04
+[info] Epoch:  24 | train loss: -12.54 | time: 0.05
+[info] Epoch:  25 | train loss: -12.67 | time: 0.05
+[info] Epoch:  26 | train loss: -12.46 | time: 0.04
+[info] Epoch:  27 | train loss: -12.82 | time: 0.05
+[info] Epoch:  28 | train loss: -13.23 | time: 0.05
+[info] Epoch:  29 | train loss: -13.56 | time: 0.05
+[info] Epoch:  30 | train loss: -13.58 | time: 0.05
+[info] Epoch:  31 | train loss: -13.68 | time: 0.05
+[info] Epoch:  32 | train loss: -13.82 | time: 0.05
+[info] Epoch:  33 | train loss: -13.93 | time: 0.04
+[info] Epoch:  34 | train loss: -13.84 | time: 0.05
+[info] Epoch:  35 | train loss: -13.29 | time: 0.05
+[info] Epoch:  36 | train loss: -13.97 | time: 0.05
+[info] Epoch:  37 | train loss: -14.25 | time: 0.05
+[info] Epoch:  38 | train loss: -14.45 | time: 0.05
+[info] Epoch:  39 | train loss: -14.35 | time: 0.05
+[info] Epoch:  40 | train loss: -14.55 | time: 0.05
+[info] Epoch:  41 | train loss: -14.29 | time: 0.05
+[info] Epoch:  42 | train loss: -14.83 | time: 0.05
+[info] Epoch:  43 | train loss: -15.01 | time: 0.05
+[info] Epoch:  44 | train loss: -15.18 | time: 0.05
+[info] Epoch:  45 | train loss: -15.07 | time: 0.05
+[info] Epoch:  46 | train loss: -15.25 | time: 0.05
+[info] Epoch:  47 | train loss: -15.33 | time: 0.05
+[info] Epoch:  48 | train loss: -15.41 | time: 0.05
+[info] Epoch:  49 | train loss: -15.06 | time: 0.05
+[info] Epoch:  50 | train loss: -15.52 | time: 0.05
+Finish loading subtask_1:  480
+Subtask id: 1
+[info] start training skill 1
+[info] Epoch:   0 | train loss:  5.67 | time: 0.03
+[info] Epoch:   1 | train loss:  2.92 | time: 0.08
+[info] Epoch:   2 | train loss:  0.50 | time: 0.08
+[info] Epoch:   3 | train loss: -0.74 | time: 0.08
+[info] Epoch:   4 | train loss: -2.18 | time: 0.08
+[info] Epoch:   5 | train loss: -2.75 | time: 0.08
+[info] Epoch:   6 | train loss: -3.73 | time: 0.08
+[info] Epoch:   7 | train loss: -5.32 | time: 0.08
+[info] Epoch:   8 | train loss: -7.24 | time: 0.08
+[info] Epoch:   9 | train loss: -8.14 | time: 0.08
+[info] Epoch:  10 | train loss: -8.65 | time: 0.08
+[info] Epoch:  11 | train loss: -9.46 | time: 0.08
+[info] Epoch:  12 | train loss: -10.34 | time: 0.08
+[info] Epoch:  13 | train loss: -10.51 | time: 0.08
+[info] Epoch:  14 | train loss: -10.46 | time: 0.08
+[info] Epoch:  15 | train loss: -10.07 | time: 0.08
+[info] Epoch:  16 | train loss: -10.57 | time: 0.08
+[info] Epoch:  17 | train loss: -11.06 | time: 0.08
+[info] Epoch:  18 | train loss: -10.71 | time: 0.08
+[info] Epoch:  19 | train loss: -11.14 | time: 0.08
+[info] Epoch:  20 | train loss: -10.95 | time: 0.08
+[info] Epoch:  21 | train loss: -11.58 | time: 0.08
+[info] Epoch:  22 | train loss: -11.94 | time: 0.08
+[info] Epoch:  23 | train loss: -11.24 | time: 0.08
+[info] Epoch:  24 | train loss: -11.58 | time: 0.08
+[info] Epoch:  25 | train loss: -12.11 | time: 0.08
+[info] Epoch:  26 | train loss: -12.04 | time: 0.08
+[info] Epoch:  27 | train loss: -12.25 | time: 0.08
+[info] Epoch:  28 | train loss: -12.16 | time: 0.08
+[info] Epoch:  29 | train loss: -12.41 | time: 0.08
+[info] Epoch:  30 | train loss: -12.85 | time: 0.08
+[info] Epoch:  31 | train loss: -12.77 | time: 0.08
+[info] Epoch:  32 | train loss: -12.84 | time: 0.08
+[info] Epoch:  33 | train loss: -13.27 | time: 0.08
+[info] Epoch:  34 | train loss: -13.07 | time: 0.08
+[info] Epoch:  35 | train loss: -13.56 | time: 0.08
+[info] Epoch:  36 | train loss: -13.80 | time: 0.08
+[info] Epoch:  37 | train loss: -13.90 | time: 0.08
+[info] Epoch:  38 | train loss: -14.09 | time: 0.08
+[info] Epoch:  39 | train loss: -14.19 | time: 0.08
+[info] Epoch:  40 | train loss: -14.26 | time: 0.08
+[info] Epoch:  41 | train loss: -14.32 | time: 0.08
+[info] Epoch:  42 | train loss: -14.34 | time: 0.08
+[info] Epoch:  43 | train loss: -14.34 | time: 0.08
+[info] Epoch:  44 | train loss: -14.40 | time: 0.08
+[info] Epoch:  45 | train loss: -14.66 | time: 0.08
+[info] Epoch:  46 | train loss: -14.79 | time: 0.08
+[info] Epoch:  47 | train loss: -14.78 | time: 0.08
+[info] Epoch:  48 | train loss: -14.91 | time: 0.08
+[info] Epoch:  49 | train loss: -14.90 | time: 0.08
+[info] Epoch:  50 | train loss: -14.86 | time: 0.08
+MetaPolicyDataset:  torch.Size([741])
+[info] start training meta controller
+[info] Epoch:   0 | Train loss: 46.13 | 
+Training ce loss: 16.51 | Training embedding loss:  1.27 | Training kl loss: 28.36 | Time: 0.02
+[info] evaluate task 0 takes 515.4 seconds
+[info] evaluate task 1 takes 4349.6 seconds
+[info] evaluate task 2 takes 33546.9 seconds
+Error executing job with overrides: ['seed=1', 'benchmark_name=libero_goal_exp6', 'skill_learning.exp_name=dinov2_libero_goal_image_only_6', 'policy=bc_transformer_policy', 'lifelong=multitask_skill', 'exp=BUDS-single-pretrain6', 'goal_modality=BUDS']
+Traceback (most recent call last):
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/main.py", line 303, in main
+    s_fwd, l_fwd, kl_loss, ce_loss, embedding_loss = meta_policy.learn_multi_task(meta_dataset, benchmark, result_summary, cfg.use_wandb)
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/algos/skill.py", line 310, in learn_multi_task
+    success_rates = evaluate_multitask_training_success(
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/metric.py", line 191, in evaluate_multitask_training_success
+    success_rate = evaluate_one_task_success(cfg, algo, task_i, task_emb, i)
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/metric.py", line 110, in evaluate_one_task_success
+    env.reset()
+  File "/home/pz1004/Workspaces/Lotus/lotus/libero/envs/venv.py", line 709, in reset
+    ret_list = [self.workers[i].recv() for i in id]
+  File "/home/pz1004/Workspaces/Lotus/lotus/libero/envs/venv.py", line 709, in <listcomp>
+    ret_list = [self.workers[i].recv() for i in id]
+  File "/home/pz1004/Workspaces/Lotus/lotus/libero/envs/venv.py", line 437, in recv
+    result = self.parent_remote.recv()
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/multiprocessing/connection.py", line 414, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:        MetaPolicy_Training/all_task_training_ce_loss ▁
+wandb: MetaPolicy_Training/all_task_training_embedding_loss ▁
+wandb:        MetaPolicy_Training/all_task_training_kl_loss ▁
+wandb:           MetaPolicy_Training/all_task_training_loss ▁
+wandb:           MetaPolicy_Training/all_task_training_time ▁
+wandb:                             MetaPolicy_Training/step ▁
+wandb:                  Skill_Training/skill0_training_loss █▇▆▆▅▅▅▅▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁
+wandb:                  Skill_Training/skill0_training_time ▁███████████████████████████████████████
+wandb:                  Skill_Training/skill1_training_loss █▇▆▆▅▅▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                  Skill_Training/skill1_training_time ▁███████████████████████████████████████
+wandb:                                  Skill_Training/step ▁▁▂▂▂▃▃▄▄▄▅▅▅▆▆▆▇▇▇█▁▁▂▂▃▃▃▄▄▄▅▅▅▆▆▆▇▇██
+wandb: 
+wandb: Run summary:
+wandb:        MetaPolicy_Training/all_task_training_ce_loss 16.50641
+wandb: MetaPolicy_Training/all_task_training_embedding_loss 1.26803
+wandb:        MetaPolicy_Training/all_task_training_kl_loss 28.35744
+wandb:           MetaPolicy_Training/all_task_training_loss 46.13188
+wandb:           MetaPolicy_Training/all_task_training_time 0.01796
+wandb:                             MetaPolicy_Training/step 0
+wandb:                  Skill_Training/skill0_training_loss -15.51714
+wandb:                  Skill_Training/skill0_training_time 0.04521
+wandb:                  Skill_Training/skill1_training_loss -14.86315
+wandb:                  Skill_Training/skill1_training_time 0.08258
+wandb:                                  Skill_Training/step 50
+wandb: 
+wandb: Synced dulcet-serenity-6: https://wandb.ai/pz1004/lifelong%20learning/runs/8ppli19e
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250703_000604-8ppli19e/logs
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/pz1004/Workspaces/robosuite-v141/robosuite/scripts/setup_macros.py (macros.py:55)
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(torch.__version__) < LooseVersion("1.0.0"):
+{ 'bddl_folder': './libero/bddl_files',
+  'benchmark_name': 'libero_goal_exp7',
+  'data': { 'action_scale': 1.0,
+            'affine_translate': 4,
+            'data_modality': ['image', 'proprio'],
+            'frame_stack': 1,
+            'img_h': 128,
+            'img_w': 128,
+            'max_word_len': 25,
+            'num_kp': 64,
+            'obs': { 'modality': { 'depth': [],
+                                   'low_dim': [ 'gripper_states',
+                                                'joint_states'],
+                                   'rgb': [ 'agentview_rgb',
+                                            'eye_in_hand_rgb']}},
+            'obs_key_mapping': { 'agentview_rgb': 'agentview_image',
+                                 'eye_in_hand_rgb': 'robot0_eye_in_hand_image',
+                                 'gripper_states': 'robot0_gripper_qpos',
+                                 'joint_states': 'robot0_joint_pos'},
+            'seq_len': 10,
+            'shuffle_task': False,
+            'state_dim': None,
+            'task_group_size': 1,
+            'task_order_index': 0,
+            'train_dataset_ratio': 0.8,
+            'use_ee': False,
+            'use_eye_in_hand': True,
+            'use_gripper': True,
+            'use_joint': True},
+  'device': 'cuda',
+  'eval': { 'batch_size': 64,
+            'eval': True,
+            'eval_every': 5,
+            'load_path': '',
+            'max_steps': 600,
+            'n_eval': 20,
+            'num_procs': 20,
+            'num_workers': 4,
+            'save_sim_states': False,
+            'use_mp': True},
+  'exp': 'BUDS-single-er7',
+  'folder': './datasets',
+  'goal_modality': 'BUDS',
+  'init_states_folder': './libero/init_files',
+  'lifelong': {'algo': 'Multitask_Skill', 'eval_in_train': True},
+  'load_previous_model': False,
+  'meta': { 'color_aug': { 'network': 'BatchWiseImgColorJitterAug',
+                           'network_kwargs': { 'brightness': 0.3,
+                                               'contrast': 0.3,
+                                               'epsilon': 0.1,
+                                               'hue': 0.3,
+                                               'input_shape': None,
+                                               'saturation': 0.3}},
+            'embed_size': 64,
+            'extra_hidden_size': 128,
+            'extra_num_layers': 0,
+            'image_encoder': { 'network': 'ResnetEncoder',
+                               'network_kwargs': { 'freeze': False,
+                                                   'language_fusion': 'film',
+                                                   'no_stride': False,
+                                                   'pretrained': False,
+                                                   'remove_layer_num': 4}},
+            'language_encoder': { 'network': 'MLPEncoder',
+                                  'network_kwargs': { 'hidden_size': 128,
+                                                      'input_size': 768,
+                                                      'num_layers': 1,
+                                                      'output_size': 128}},
+            'policy_head': { 'loss_kwargs': {'loss_coef': 1.0},
+                             'network': 'GMMHead',
+                             'network_kwargs': { 'activation': 'softplus',
+                                                 'hidden_size': 1024,
+                                                 'low_eval_noise': False,
+                                                 'min_std': 0.0001,
+                                                 'num_layers': 2,
+                                                 'num_modes': 5}},
+            'policy_type': 'BCTransformerPolicy',
+            'temporal_position_encoding': { 'network': 'SinusoidalPositionEncoding',
+                                            'network_kwargs': { 'factor_ratio': None,
+                                                                'input_size': None,
+                                                                'inv_freq_factor': 10}},
+            'transformer_dropout': 0.1,
+            'transformer_head_output_size': 64,
+            'transformer_input_size': None,
+            'transformer_max_seq_len': 10,
+            'transformer_mlp_hidden_size': 256,
+            'transformer_num_heads': 6,
+            'transformer_num_layers': 4,
+            'translation_aug': { 'network': 'TranslationAug',
+                                 'network_kwargs': { 'input_shape': None,
+                                                     'translation': 8}}},
+  'policy': { 'color_aug': { 'network': 'BatchWiseImgColorJitterAug',
+                             'network_kwargs': { 'brightness': 0.3,
+                                                 'contrast': 0.3,
+                                                 'epsilon': 0.1,
+                                                 'hue': 0.3,
+                                                 'input_shape': None,
+                                                 'saturation': 0.3}},
+              'embed_size': 64,
+              'extra_hidden_size': 128,
+              'extra_num_layers': 0,
+              'image_encoder': { 'network': 'ResnetEncoder',
+                                 'network_kwargs': { 'freeze': False,
+                                                     'language_fusion': 'film',
+                                                     'no_stride': False,
+                                                     'pretrained': False,
+                                                     'remove_layer_num': 4}},
+              'language_encoder': { 'network': 'MLPEncoder',
+                                    'network_kwargs': { 'hidden_size': 128,
+                                                        'input_size': 768,
+                                                        'num_layers': 1,
+                                                        'output_size': 128}},
+              'policy_head': { 'loss_kwargs': {'loss_coef': 1.0},
+                               'network': 'GMMHead',
+                               'network_kwargs': { 'activation': 'softplus',
+                                                   'hidden_size': 1024,
+                                                   'low_eval_noise': False,
+                                                   'min_std': 0.0001,
+                                                   'num_layers': 2,
+                                                   'num_modes': 5}},
+              'policy_type': 'BCTransformerPolicy',
+              'temporal_position_encoding': { 'network': 'SinusoidalPositionEncoding',
+                                              'network_kwargs': { 'factor_ratio': None,
+                                                                  'input_size': None,
+                                                                  'inv_freq_factor': 10}},
+              'transformer_dropout': 0.1,
+              'transformer_head_output_size': 64,
+              'transformer_input_size': None,
+              'transformer_max_seq_len': 10,
+              'transformer_mlp_hidden_size': 256,
+              'transformer_num_heads': 6,
+              'transformer_num_layers': 4,
+              'translation_aug': { 'network': 'TranslationAug',
+                                   'network_kwargs': { 'input_shape': None,
+                                                       'translation': 8}}},
+  'pretrain': False,
+  'pretrain_model_path': 'experiments/libero_goal_exp6/Multitask_Skill/dinov2_libero_goal_image_only_6_seed1/BUDS-single-pretrain6_run_001',
+  'seed': 1,
+  'skill_learning': { 'agglomoration': { 'K': 5,
+                                         'affinity': 'rbf',
+                                         'agglomoration_step': 10,
+                                         'dist': 'l2',
+                                         'footprint': 'mean',
+                                         'min_len_thresh': 20,
+                                         'scale': 0.05,
+                                         'segment_footprint': 'concat_1',
+                                         'segment_scale': 2,
+                                         'visualization': False},
+                      'eval': {'meta_freq': 5},
+                      'exp_name': 'dinov2_libero_goal_image_only_7',
+                      'folder': './',
+                      'hydra': {'run': {'dir': '.'}},
+                      'meta': { 'activation': 'leaky-relu',
+                                'affine_translate': 4,
+                                'batch_size': 100,
+                                'embedding_layer_dims': [300, 400],
+                                'id_layer_dims': [300, 400],
+                                'img_h': 128,
+                                'img_w': 128,
+                                'lr': 0.0001,
+                                'num_epochs': 1001,
+                                'num_kp': 64,
+                                'num_workers': 0,
+                                'random_affine': False,
+                                'rnn_hidden_dim': 100,
+                                'rnn_num_layers': 2,
+                                'separate_id_prediction': False,
+                                'use_cvae': True,
+                                'use_eye_in_hand': False,
+                                'use_rnn': False,
+                                'use_spatial_softmax': False,
+                                'visual_feature_dimension': 64},
+                      'meta_cvae_cfg': { 'enable': True,
+                                         'kl_coeff': 0.01,
+                                         'latent_dim': 64},
+                      'modality_str': 'dinov2_agentview_eye_in_hand',
+                      'multitask': { 'skip_task_id': [5, 6, 8],
+                                     'task_id': 0,
+                                     'testing_percentage': 1.0,
+                                     'training_task_id': -1},
+                      'record_states': True,
+                      'repr': { 'alpha_kl': 0.05,
+                                'modalities': [ 'agentview',
+                                                'eye_in_hand',
+                                                'proprio'],
+                                'no_skip': True,
+                                'z_dim': 32},
+                      'skill_subgoal_cfg': { 'horizon': 30,
+                                             'subgoal_type': 'linear',
+                                             'use_eye_in_hand': False,
+                                             'use_final_goal': False,
+                                             'use_spatial_softmax': True,
+                                             'visual_feature_dimension': 32},
+                      'skill_training': { 'action_squash': True,
+                                          'activation': 'leaky-relu',
+                                          'affine_translate': 4,
+                                          'agglomoration': {'K': 5},
+                                          'batch_size': 128,
+                                          'data_modality': ['image', 'proprio'],
+                                          'gripper_smoothing': False,
+                                          'img_h': 128,
+                                          'img_w': 128,
+                                          'lr': 0.001,
+                                          'min_lr': 0.0001,
+                                          'no_skip': True,
+                                          'num_epochs': 1001,
+                                          'num_kp': 64,
+                                          'num_workers': 0,
+                                          'policy_layer_dims': [300, 400],
+                                          'policy_type': 'normal_subgoal',
+                                          'random_affine': True,
+                                          'rnn_encoder_mlp_dims': [128, 128],
+                                          'rnn_hidden_dim': 100,
+                                          'rnn_loss_reduction': 'mean',
+                                          'rnn_num_layers': 2,
+                                          'run_idx': 0,
+                                          'state_dim': 37,
+                                          'subtask_id': [],
+                                          'use_changepoint': False,
+                                          'use_eye_in_hand': True,
+                                          'use_gripper': True,
+                                          'use_joints': True,
+                                          'use_rnn': False,
+                                          'visual_feature_dimension': 64},
+                      'use_checkpoint': False,
+                      'verbose': True,
+                      'video': { 'demo_output_dir': 'paper_vis/demo_videos/defaults',
+                                 'dir': '',
+                                 'fps': 60,
+                                 'height': 1024,
+                                 'output_dir': 'paper_vis/videos/defaults',
+                                 'width': 1024}},
+  'task_embedding_format': 'bert',
+  'task_embedding_one_hot_offset': 1,
+  'train': { 'batch_size': 32,
+             'debug': False,
+             'grad_clip': 100.0,
+             'loss_scale': 1.0,
+             'n_epochs': 50,
+             'num_workers': 4,
+             'optimizer': { 'kwargs': { 'betas': [0.9, 0.999],
+                                        'lr': 0.0001,
+                                        'weight_decay': 0.0001},
+                            'name': 'torch.optim.AdamW'},
+             'resume': False,
+             'resume_path': '',
+             'scheduler': { 'kwargs': {'eta_min': 1e-05, 'last_epoch': -1},
+                            'name': 'torch.optim.lr_scheduler.CosineAnnealingLR'},
+             'use_augmentation': True},
+  'use_wandb': True,
+  'wandb_project': 'lifelong learning'}
+'Available algorithms:'
+{ 'agem': <class 'lotus.lifelong.algos.agem.AGEM'>,
+  'er': <class 'lotus.lifelong.algos.er.ER'>,
+  'ewc': <class 'lotus.lifelong.algos.ewc.EWC'>,
+  'metacontroller': <class 'lotus.lifelong.algos.skill.MetaController'>,
+  'multitask': <class 'lotus.lifelong.algos.multitask.Multitask'>,
+  'packnet': <class 'lotus.lifelong.algos.packnet.PackNet'>,
+  'sequential': <class 'lotus.lifelong.algos.base.Sequential'>,
+  'singletask': <class 'lotus.lifelong.algos.single_task.SingleTask'>,
+  'subskill': <class 'lotus.lifelong.algos.skill.SubSkill'>}
+'Available policies:'
+{ 'bcrnnpolicy': <class 'lotus.lifelong.models.bc_rnn_policy.BCRNNPolicy'>,
+  'bctransformerpolicy': <class 'lotus.lifelong.models.bc_transformer_policy.BCTransformerPolicy'>,
+  'bctransformerskillpolicy': <class 'lotus.lifelong.models.bc_transformer_policy.BCTransformerSkillPolicy'>,
+  'bcviltpolicy': <class 'lotus.lifelong.models.bc_vilt_policy.BCViLTPolicy'>}
+[info] using task orders [0, 1, 2, 3, 4, 5, 6]
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: rgb with keys: ['eye_in_hand_rgb', 'agentview_rgb']
+using obs modality: depth with keys: []
+using obs modality: low_dim with keys: ['gripper_states', 'joint_states']
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 2829.63it/s]
+./datasets/libero_goal/open_the_middle_drawer_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3328.81it/s]
+./datasets/libero_goal/put_the_bowl_on_the_stove_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3646.59it/s]
+./datasets/libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3751.28it/s]
+./datasets/libero_goal/open_the_top_drawer_and_put_the_bowl_inside_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3785.95it/s]
+./datasets/libero_goal/put_the_bowl_on_top_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3828.60it/s]
+./datasets/libero_goal/push_the_plate_to_the_front_of_the_stove_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3813.70it/s]
+./datasets/libero_goal/put_the_cream_cheese_in_the_bowl_demo.hdf5
+subtasks distance score: 0.5371428571428571
+subtasks distance score: 0.0
+/home/pz1004/Workspaces/Lotus/lotus/lifelong/datasets.py:563: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  if 'segmentation' in subtasks_f['subtasks'][key]:
+subtasks distance score: 0.0
+subtasks distance score: 0.5428571428571428
+subtasks distance score: 0.0
+subtasks distance score: 0.0
+subtasks distance score: 0.48244897959183675
+train_dataset_id: [1, 2]
+
+=================== Lifelong Benchmark Information  ===================
+ Name: libero_goal
+ # Tasks: 7
+    - Task 1:
+        open the middle drawer of the cabinet
+    - Task 2:
+        put the bowl on the stove
+    - Task 3:
+        put the wine bottle on top of the cabinet
+    - Task 4:
+        open the top drawer and put the bowl inside
+    - Task 5:
+        put the bowl on top of the cabinet
+    - Task 6:
+        push the plate to the front of the stove
+    - Task 7:
+        put the cream cheese in the bowl
+=======================================================================
+
+wandb: Currently logged in as: pz1004. Use `wandb login --relogin` to force relogin
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/wandb/util.py:249: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  scope.user = {"email": s.email}
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/wandb/util.py:249: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  scope.user = {"email": s.email}
+wandb: wandb version 0.21.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.13.1
+wandb: Run data is saved locally in /home/pz1004/Workspaces/Lotus/lotus/wandb/run-20250704_005241-n9uuz4l0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dandy-pond-7
+wandb: ⭐️ View project at https://wandb.ai/pz1004/lifelong%20learning
+wandb: 🚀 View run at https://wandb.ai/pz1004/lifelong%20learning/runs/n9uuz4l0
+Finish loading subtask_0:  262
+Subtask id: 0
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3483.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Finish loading subtask_1:  480
+Subtask id: 1
+[info] start training skill 1
+[info] Epoch:   0 | train loss:  5.72 | time: 0.04
+[info] Epoch:   1 | train loss:  3.00 | time: 0.08
+[info] Epoch:   2 | train loss: -0.29 | time: 0.08
+[info] Epoch:   3 | train loss: -0.89 | time: 0.08
+[info] Epoch:   4 | train loss: -2.04 | time: 0.08
+[info] Epoch:   5 | train loss: -3.20 | time: 0.08
+[info] Epoch:   6 | train loss: -4.16 | time: 0.08
+[info] Epoch:   7 | train loss: -5.04 | time: 0.08
+[info] Epoch:   8 | train loss: -5.90 | time: 0.09
+[info] Epoch:   9 | train loss: -6.80 | time: 0.09
+[info] Epoch:  10 | train loss: -8.30 | time: 0.09
+[info] Epoch:  11 | train loss: -9.86 | time: 0.09
+[info] Epoch:  12 | train loss: -10.56 | time: 0.08
+[info] Epoch:  13 | train loss: -11.17 | time: 0.09
+[info] Epoch:  14 | train loss: -11.61 | time: 0.08
+[info] Epoch:  15 | train loss: -11.55 | time: 0.08
+[info] Epoch:  16 | train loss: -11.62 | time: 0.08
+[info] Epoch:  17 | train loss: -12.25 | time: 0.09
+[info] Epoch:  18 | train loss: -12.26 | time: 0.09
+[info] Epoch:  19 | train loss: -12.30 | time: 0.08
+[info] Epoch:  20 | train loss: -12.56 | time: 0.08
+[info] Epoch:  21 | train loss: -12.88 | time: 0.09
+[info] Epoch:  22 | train loss: -12.92 | time: 0.09
+[info] Epoch:  23 | train loss: -12.88 | time: 0.09
+[info] Epoch:  24 | train loss: -13.15 | time: 0.08
+[info] Epoch:  25 | train loss: -13.22 | time: 0.08
+[info] Epoch:  26 | train loss: -13.05 | time: 0.09
+[info] Epoch:  27 | train loss: -13.20 | time: 0.08
+[info] Epoch:  28 | train loss: -13.39 | time: 0.08
+[info] Epoch:  29 | train loss: -13.76 | time: 0.08
+[info] Epoch:  30 | train loss: -14.09 | time: 0.09
+[info] Epoch:  31 | train loss: -13.79 | time: 0.08
+[info] Epoch:  32 | train loss: -14.51 | time: 0.09
+[info] Epoch:  33 | train loss: -14.67 | time: 0.08
+[info] Epoch:  34 | train loss: -14.61 | time: 0.08
+[info] Epoch:  35 | train loss: -14.72 | time: 0.08
+[info] Epoch:  36 | train loss: -14.70 | time: 0.09
+[info] Epoch:  37 | train loss: -14.86 | time: 0.08
+[info] Epoch:  38 | train loss: -15.22 | time: 0.08
+[info] Epoch:  39 | train loss: -15.32 | time: 0.09
+[info] Epoch:  40 | train loss: -15.47 | time: 0.09
+[info] Epoch:  41 | train loss: -15.36 | time: 0.09
+[info] Epoch:  42 | train loss: -15.44 | time: 0.09
+[info] Epoch:  43 | train loss: -15.57 | time: 0.09
+[info] Epoch:  44 | train loss: -15.65 | time: 0.09
+[info] Epoch:  45 | train loss: -15.74 | time: 0.09
+[info] Epoch:  46 | train loss: -15.72 | time: 0.08
+[info] Epoch:  47 | train loss: -15.83 | time: 0.09
+[info] Epoch:  48 | train loss: -15.87 | time: 0.09
+[info] Epoch:  49 | train loss: -15.94 | time: 0.09
+[info] Epoch:  50 | train loss: -15.98 | time: 0.09
+Subtask id: 2
+No Data on Subtask 2
+MetaPolicyDataset:  torch.Size([741])
+Error executing job with overrides: ['seed=1', 'benchmark_name=libero_goal_exp7', 'skill_learning.exp_name=dinov2_libero_goal_image_only_7', 'policy=bc_transformer_policy', 'lifelong=multitask_skill', 'exp=BUDS-single-er7', 'goal_modality=BUDS', 'pretrain_model_path=experiments/libero_goal_exp6/Multitask_Skill/dinov2_libero_goal_image_only_6_seed1/BUDS-single-pretrain6_run_001']
+Traceback (most recent call last):
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/main.py", line 301, in main
+    meta_policy.load_meta_policy(experiment_dir=cfg.pretrain_model_path)
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/algos/skill.py", line 593, in load_meta_policy
+    self.policy.load_state_dict(torch_load_model(model_checkpoint_name)[0])
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/utils.py", line 86, in torch_load_model
+    model_dict = torch.load(model_path, map_location=map_location)
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/serialization.py", line 791, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/serialization.py", line 271, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/serialization.py", line 252, in __init__
+    super().__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: 'experiments/libero_goal_exp6/Multitask_Skill/dinov2_libero_goal_image_only_6_seed1/BUDS-single-pretrain6_run_001/meta_controller_model_ep50.pth'
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: Skill_Training/skill1_training_loss █▇▆▆▅▅▅▄▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: Skill_Training/skill1_training_time ▁▇▇▇▇▇▇███▇▇▇▇█▇▇▇▇▇▇▇▇▇██▇▇▇▇▇█▇▇█▇▇▇█▇
+wandb:                 Skill_Training/step ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb: 
+wandb: Run summary:
+wandb: Skill_Training/skill1_training_loss -15.97928
+wandb: Skill_Training/skill1_training_time 0.08596
+wandb:                 Skill_Training/step 50
+wandb: 
+wandb: Synced dandy-pond-7: https://wandb.ai/pz1004/lifelong%20learning/runs/n9uuz4l0
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250704_005241-n9uuz4l0/logs
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/pz1004/Workspaces/robosuite-v141/robosuite/scripts/setup_macros.py (macros.py:55)
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(torch.__version__) < LooseVersion("1.0.0"):
+{ 'bddl_folder': './libero/bddl_files',
+  'benchmark_name': 'libero_goal_exp8',
+  'data': { 'action_scale': 1.0,
+            'affine_translate': 4,
+            'data_modality': ['image', 'proprio'],
+            'frame_stack': 1,
+            'img_h': 128,
+            'img_w': 128,
+            'max_word_len': 25,
+            'num_kp': 64,
+            'obs': { 'modality': { 'depth': [],
+                                   'low_dim': [ 'gripper_states',
+                                                'joint_states'],
+                                   'rgb': [ 'agentview_rgb',
+                                            'eye_in_hand_rgb']}},
+            'obs_key_mapping': { 'agentview_rgb': 'agentview_image',
+                                 'eye_in_hand_rgb': 'robot0_eye_in_hand_image',
+                                 'gripper_states': 'robot0_gripper_qpos',
+                                 'joint_states': 'robot0_joint_pos'},
+            'seq_len': 10,
+            'shuffle_task': False,
+            'state_dim': None,
+            'task_group_size': 1,
+            'task_order_index': 0,
+            'train_dataset_ratio': 0.8,
+            'use_ee': False,
+            'use_eye_in_hand': True,
+            'use_gripper': True,
+            'use_joint': True},
+  'device': 'cuda',
+  'eval': { 'batch_size': 64,
+            'eval': True,
+            'eval_every': 5,
+            'load_path': '',
+            'max_steps': 600,
+            'n_eval': 20,
+            'num_procs': 20,
+            'num_workers': 4,
+            'save_sim_states': False,
+            'use_mp': True},
+  'exp': 'BUDS-single-er8',
+  'folder': './datasets',
+  'goal_modality': 'BUDS',
+  'init_states_folder': './libero/init_files',
+  'lifelong': {'algo': 'Multitask_Skill', 'eval_in_train': True},
+  'load_previous_model': False,
+  'meta': { 'color_aug': { 'network': 'BatchWiseImgColorJitterAug',
+                           'network_kwargs': { 'brightness': 0.3,
+                                               'contrast': 0.3,
+                                               'epsilon': 0.1,
+                                               'hue': 0.3,
+                                               'input_shape': None,
+                                               'saturation': 0.3}},
+            'embed_size': 64,
+            'extra_hidden_size': 128,
+            'extra_num_layers': 0,
+            'image_encoder': { 'network': 'ResnetEncoder',
+                               'network_kwargs': { 'freeze': False,
+                                                   'language_fusion': 'film',
+                                                   'no_stride': False,
+                                                   'pretrained': False,
+                                                   'remove_layer_num': 4}},
+            'language_encoder': { 'network': 'MLPEncoder',
+                                  'network_kwargs': { 'hidden_size': 128,
+                                                      'input_size': 768,
+                                                      'num_layers': 1,
+                                                      'output_size': 128}},
+            'policy_head': { 'loss_kwargs': {'loss_coef': 1.0},
+                             'network': 'GMMHead',
+                             'network_kwargs': { 'activation': 'softplus',
+                                                 'hidden_size': 1024,
+                                                 'low_eval_noise': False,
+                                                 'min_std': 0.0001,
+                                                 'num_layers': 2,
+                                                 'num_modes': 5}},
+            'policy_type': 'BCTransformerPolicy',
+            'temporal_position_encoding': { 'network': 'SinusoidalPositionEncoding',
+                                            'network_kwargs': { 'factor_ratio': None,
+                                                                'input_size': None,
+                                                                'inv_freq_factor': 10}},
+            'transformer_dropout': 0.1,
+            'transformer_head_output_size': 64,
+            'transformer_input_size': None,
+            'transformer_max_seq_len': 10,
+            'transformer_mlp_hidden_size': 256,
+            'transformer_num_heads': 6,
+            'transformer_num_layers': 4,
+            'translation_aug': { 'network': 'TranslationAug',
+                                 'network_kwargs': { 'input_shape': None,
+                                                     'translation': 8}}},
+  'policy': { 'color_aug': { 'network': 'BatchWiseImgColorJitterAug',
+                             'network_kwargs': { 'brightness': 0.3,
+                                                 'contrast': 0.3,
+                                                 'epsilon': 0.1,
+                                                 'hue': 0.3,
+                                                 'input_shape': None,
+                                                 'saturation': 0.3}},
+              'embed_size': 64,
+              'extra_hidden_size': 128,
+              'extra_num_layers': 0,
+              'image_encoder': { 'network': 'ResnetEncoder',
+                                 'network_kwargs': { 'freeze': False,
+                                                     'language_fusion': 'film',
+                                                     'no_stride': False,
+                                                     'pretrained': False,
+                                                     'remove_layer_num': 4}},
+              'language_encoder': { 'network': 'MLPEncoder',
+                                    'network_kwargs': { 'hidden_size': 128,
+                                                        'input_size': 768,
+                                                        'num_layers': 1,
+                                                        'output_size': 128}},
+              'policy_head': { 'loss_kwargs': {'loss_coef': 1.0},
+                               'network': 'GMMHead',
+                               'network_kwargs': { 'activation': 'softplus',
+                                                   'hidden_size': 1024,
+                                                   'low_eval_noise': False,
+                                                   'min_std': 0.0001,
+                                                   'num_layers': 2,
+                                                   'num_modes': 5}},
+              'policy_type': 'BCTransformerPolicy',
+              'temporal_position_encoding': { 'network': 'SinusoidalPositionEncoding',
+                                              'network_kwargs': { 'factor_ratio': None,
+                                                                  'input_size': None,
+                                                                  'inv_freq_factor': 10}},
+              'transformer_dropout': 0.1,
+              'transformer_head_output_size': 64,
+              'transformer_input_size': None,
+              'transformer_max_seq_len': 10,
+              'transformer_mlp_hidden_size': 256,
+              'transformer_num_heads': 6,
+              'transformer_num_layers': 4,
+              'translation_aug': { 'network': 'TranslationAug',
+                                   'network_kwargs': { 'input_shape': None,
+                                                       'translation': 8}}},
+  'pretrain': False,
+  'pretrain_model_path': 'experiments/libero_goal_exp7/Multitask_Skill/dinov2_libero_goal_image_only_7_seed1/BUDS-single-er7_run_001',
+  'seed': 1,
+  'skill_learning': { 'agglomoration': { 'K': 5,
+                                         'affinity': 'rbf',
+                                         'agglomoration_step': 10,
+                                         'dist': 'l2',
+                                         'footprint': 'mean',
+                                         'min_len_thresh': 20,
+                                         'scale': 0.05,
+                                         'segment_footprint': 'concat_1',
+                                         'segment_scale': 2,
+                                         'visualization': False},
+                      'eval': {'meta_freq': 5},
+                      'exp_name': 'dinov2_libero_goal_image_only_8',
+                      'folder': './',
+                      'hydra': {'run': {'dir': '.'}},
+                      'meta': { 'activation': 'leaky-relu',
+                                'affine_translate': 4,
+                                'batch_size': 100,
+                                'embedding_layer_dims': [300, 400],
+                                'id_layer_dims': [300, 400],
+                                'img_h': 128,
+                                'img_w': 128,
+                                'lr': 0.0001,
+                                'num_epochs': 1001,
+                                'num_kp': 64,
+                                'num_workers': 0,
+                                'random_affine': False,
+                                'rnn_hidden_dim': 100,
+                                'rnn_num_layers': 2,
+                                'separate_id_prediction': False,
+                                'use_cvae': True,
+                                'use_eye_in_hand': False,
+                                'use_rnn': False,
+                                'use_spatial_softmax': False,
+                                'visual_feature_dimension': 64},
+                      'meta_cvae_cfg': { 'enable': True,
+                                         'kl_coeff': 0.01,
+                                         'latent_dim': 64},
+                      'modality_str': 'dinov2_agentview_eye_in_hand',
+                      'multitask': { 'skip_task_id': [5, 6, 8],
+                                     'task_id': 0,
+                                     'testing_percentage': 1.0,
+                                     'training_task_id': -1},
+                      'record_states': True,
+                      'repr': { 'alpha_kl': 0.05,
+                                'modalities': [ 'agentview',
+                                                'eye_in_hand',
+                                                'proprio'],
+                                'no_skip': True,
+                                'z_dim': 32},
+                      'skill_subgoal_cfg': { 'horizon': 30,
+                                             'subgoal_type': 'linear',
+                                             'use_eye_in_hand': False,
+                                             'use_final_goal': False,
+                                             'use_spatial_softmax': True,
+                                             'visual_feature_dimension': 32},
+                      'skill_training': { 'action_squash': True,
+                                          'activation': 'leaky-relu',
+                                          'affine_translate': 4,
+                                          'agglomoration': {'K': 5},
+                                          'batch_size': 128,
+                                          'data_modality': ['image', 'proprio'],
+                                          'gripper_smoothing': False,
+                                          'img_h': 128,
+                                          'img_w': 128,
+                                          'lr': 0.001,
+                                          'min_lr': 0.0001,
+                                          'no_skip': True,
+                                          'num_epochs': 1001,
+                                          'num_kp': 64,
+                                          'num_workers': 0,
+                                          'policy_layer_dims': [300, 400],
+                                          'policy_type': 'normal_subgoal',
+                                          'random_affine': True,
+                                          'rnn_encoder_mlp_dims': [128, 128],
+                                          'rnn_hidden_dim': 100,
+                                          'rnn_loss_reduction': 'mean',
+                                          'rnn_num_layers': 2,
+                                          'run_idx': 0,
+                                          'state_dim': 37,
+                                          'subtask_id': [],
+                                          'use_changepoint': False,
+                                          'use_eye_in_hand': True,
+                                          'use_gripper': True,
+                                          'use_joints': True,
+                                          'use_rnn': False,
+                                          'visual_feature_dimension': 64},
+                      'use_checkpoint': False,
+                      'verbose': True,
+                      'video': { 'demo_output_dir': 'paper_vis/demo_videos/defaults',
+                                 'dir': '',
+                                 'fps': 60,
+                                 'height': 1024,
+                                 'output_dir': 'paper_vis/videos/defaults',
+                                 'width': 1024}},
+  'task_embedding_format': 'bert',
+  'task_embedding_one_hot_offset': 1,
+  'train': { 'batch_size': 32,
+             'debug': False,
+             'grad_clip': 100.0,
+             'loss_scale': 1.0,
+             'n_epochs': 50,
+             'num_workers': 4,
+             'optimizer': { 'kwargs': { 'betas': [0.9, 0.999],
+                                        'lr': 0.0001,
+                                        'weight_decay': 0.0001},
+                            'name': 'torch.optim.AdamW'},
+             'resume': False,
+             'resume_path': '',
+             'scheduler': { 'kwargs': {'eta_min': 1e-05, 'last_epoch': -1},
+                            'name': 'torch.optim.lr_scheduler.CosineAnnealingLR'},
+             'use_augmentation': True},
+  'use_wandb': True,
+  'wandb_project': 'lifelong learning'}
+'Available algorithms:'
+{ 'agem': <class 'lotus.lifelong.algos.agem.AGEM'>,
+  'er': <class 'lotus.lifelong.algos.er.ER'>,
+  'ewc': <class 'lotus.lifelong.algos.ewc.EWC'>,
+  'metacontroller': <class 'lotus.lifelong.algos.skill.MetaController'>,
+  'multitask': <class 'lotus.lifelong.algos.multitask.Multitask'>,
+  'packnet': <class 'lotus.lifelong.algos.packnet.PackNet'>,
+  'sequential': <class 'lotus.lifelong.algos.base.Sequential'>,
+  'singletask': <class 'lotus.lifelong.algos.single_task.SingleTask'>,
+  'subskill': <class 'lotus.lifelong.algos.skill.SubSkill'>}
+'Available policies:'
+{ 'bcrnnpolicy': <class 'lotus.lifelong.models.bc_rnn_policy.BCRNNPolicy'>,
+  'bctransformerpolicy': <class 'lotus.lifelong.models.bc_transformer_policy.BCTransformerPolicy'>,
+  'bctransformerskillpolicy': <class 'lotus.lifelong.models.bc_transformer_policy.BCTransformerSkillPolicy'>,
+  'bcviltpolicy': <class 'lotus.lifelong.models.bc_vilt_policy.BCViLTPolicy'>}
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7]
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: rgb with keys: ['eye_in_hand_rgb', 'agentview_rgb']
+using obs modality: depth with keys: []
+using obs modality: low_dim with keys: ['gripper_states', 'joint_states']
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 2910.93it/s]
+./datasets/libero_goal/open_the_middle_drawer_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3460.19it/s]
+./datasets/libero_goal/put_the_bowl_on_the_stove_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3802.22it/s]
+./datasets/libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3791.84it/s]
+./datasets/libero_goal/open_the_top_drawer_and_put_the_bowl_inside_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3909.75it/s]
+./datasets/libero_goal/put_the_bowl_on_top_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3814.11it/s]
+./datasets/libero_goal/push_the_plate_to_the_front_of_the_stove_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3987.81it/s]
+./datasets/libero_goal/put_the_cream_cheese_in_the_bowl_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3841.01it/s]
+./datasets/libero_goal/turn_on_the_stove_demo.hdf5
+subtasks distance score: 0.48244897959183675
+subtasks distance score: 0.5371428571428571
+subtasks distance score: 0.0
+subtasks distance score: 0.0
+subtasks distance score: 0.5428571428571428
+subtasks distance score: 0.0
+subtasks distance score: 0.0
+subtasks distance score: 0.04
+/home/pz1004/Workspaces/Lotus/lotus/lifelong/datasets.py:563: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  if 'segmentation' in subtasks_f['subtasks'][key]:
+train_dataset_id: [0, 1, 3]
+
+=================== Lifelong Benchmark Information  ===================
+ Name: libero_goal
+ # Tasks: 8
+    - Task 1:
+        open the middle drawer of the cabinet
+    - Task 2:
+        put the bowl on the stove
+    - Task 3:
+        put the wine bottle on top of the cabinet
+    - Task 4:
+        open the top drawer and put the bowl inside
+    - Task 5:
+        put the bowl on top of the cabinet
+    - Task 6:
+        push the plate to the front of the stove
+    - Task 7:
+        put the cream cheese in the bowl
+    - Task 8:
+        turn on the stove
+=======================================================================
+
+wandb: Currently logged in as: pz1004. Use `wandb login --relogin` to force relogin
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/wandb/util.py:249: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  scope.user = {"email": s.email}
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/wandb/util.py:249: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  scope.user = {"email": s.email}
+wandb: wandb version 0.21.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.13.1
+wandb: Run data is saved locally in /home/pz1004/Workspaces/Lotus/lotus/wandb/run-20250704_005754-cr3f8wmn
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run vague-dream-8
+wandb: ⭐️ View project at https://wandb.ai/pz1004/lifelong%20learning
+wandb: 🚀 View run at https://wandb.ai/pz1004/lifelong%20learning/runs/cr3f8wmn
+Finish loading subtask_0:  262
+Subtask id: 0
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3483.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[info] start training skill 0
+[info] Epoch:   0 | train loss:  5.53 | time: 0.03
+[info] Epoch:   1 | train loss:  4.17 | time: 0.05
+[info] Epoch:   2 | train loss:  0.48 | time: 0.05
+[info] Epoch:   3 | train loss: -0.11 | time: 0.04
+[info] Epoch:   4 | train loss: -0.95 | time: 0.05
+[info] Epoch:   5 | train loss: -1.68 | time: 0.04
+[info] Epoch:   6 | train loss: -2.59 | time: 0.05
+[info] Epoch:   7 | train loss: -3.16 | time: 0.05
+[info] Epoch:   8 | train loss: -4.28 | time: 0.05
+[info] Epoch:   9 | train loss: -5.07 | time: 0.05
+[info] Epoch:  10 | train loss: -5.83 | time: 0.05
+[info] Epoch:  11 | train loss: -5.81 | time: 0.05
+[info] Epoch:  12 | train loss: -6.98 | time: 0.05
+[info] Epoch:  13 | train loss: -6.26 | time: 0.05
+[info] Epoch:  14 | train loss: -8.21 | time: 0.05
+[info] Epoch:  15 | train loss: -8.32 | time: 0.05
+[info] Epoch:  16 | train loss: -9.68 | time: 0.05
+[info] Epoch:  17 | train loss: -9.87 | time: 0.05
+[info] Epoch:  18 | train loss: -10.74 | time: 0.05
+[info] Epoch:  19 | train loss: -10.92 | time: 0.05
+[info] Epoch:  20 | train loss: -11.77 | time: 0.05
+[info] Epoch:  21 | train loss: -11.87 | time: 0.05
+[info] Epoch:  22 | train loss: -9.87 | time: 0.05
+[info] Epoch:  23 | train loss: -12.48 | time: 0.05
+[info] Epoch:  24 | train loss: -12.78 | time: 0.05
+[info] Epoch:  25 | train loss: -12.89 | time: 0.05
+[info] Epoch:  26 | train loss: -12.91 | time: 0.05
+[info] Epoch:  27 | train loss: -13.37 | time: 0.05
+[info] Epoch:  28 | train loss: -13.30 | time: 0.05
+[info] Epoch:  29 | train loss: -13.09 | time: 0.05
+[info] Epoch:  30 | train loss: -13.58 | time: 0.05
+[info] Epoch:  31 | train loss: -13.74 | time: 0.05
+[info] Epoch:  32 | train loss: -14.41 | time: 0.05
+[info] Epoch:  33 | train loss: -13.90 | time: 0.05
+[info] Epoch:  34 | train loss: -13.76 | time: 0.05
+[info] Epoch:  35 | train loss: -14.31 | time: 0.05
+[info] Epoch:  36 | train loss: -14.35 | time: 0.05
+[info] Epoch:  37 | train loss: -14.58 | time: 0.05
+[info] Epoch:  38 | train loss: -14.66 | time: 0.05
+[info] Epoch:  39 | train loss: -14.68 | time: 0.05
+[info] Epoch:  40 | train loss: -15.06 | time: 0.05
+[info] Epoch:  41 | train loss: -14.69 | time: 0.05
+[info] Epoch:  42 | train loss: -15.24 | time: 0.05
+[info] Epoch:  43 | train loss: -15.26 | time: 0.05
+[info] Epoch:  44 | train loss: -15.32 | time: 0.05
+[info] Epoch:  45 | train loss: -15.58 | time: 0.05
+[info] Epoch:  46 | train loss: -15.40 | time: 0.05
+[info] Epoch:  47 | train loss: -15.41 | time: 0.05
+[info] Epoch:  48 | train loss: -15.42 | time: 0.05
+[info] Epoch:  49 | train loss: -15.84 | time: 0.05
+[info] Epoch:  50 | train loss: -15.70 | time: 0.05
+Finish loading subtask_1:  511
+Subtask id: 1
+[info] start training skill 1
+[info] Epoch:   0 | train loss: -15.58 | time: 0.03
+[info] Epoch:   1 | train loss:  8.29 | time: 0.09
+[info] Epoch:   2 | train loss: -9.83 | time: 0.09
+[info] Epoch:   3 | train loss: -10.47 | time: 0.09
+[info] Epoch:   4 | train loss: -11.99 | time: 0.09
+[info] Epoch:   5 | train loss: -12.32 | time: 0.09
+[info] Epoch:   6 | train loss: -12.68 | time: 0.09
+[info] Epoch:   7 | train loss: -13.37 | time: 0.09
+[info] Epoch:   8 | train loss: -13.53 | time: 0.09
+[info] Epoch:   9 | train loss: -13.32 | time: 0.09
+[info] Epoch:  10 | train loss: -12.66 | time: 0.09
+[info] Epoch:  11 | train loss: -13.24 | time: 0.10
+[info] Epoch:  12 | train loss: -11.91 | time: 0.09
+[info] Epoch:  13 | train loss: -12.51 | time: 0.10
+[info] Epoch:  14 | train loss: -13.01 | time: 0.09
+[info] Epoch:  15 | train loss: -14.09 | time: 0.09
+[info] Epoch:  16 | train loss: -14.34 | time: 0.09
+[info] Epoch:  17 | train loss: -14.60 | time: 0.09
+[info] Epoch:  18 | train loss: -14.35 | time: 0.09
+[info] Epoch:  19 | train loss: -14.49 | time: 0.09
+[info] Epoch:  20 | train loss: -14.65 | time: 0.09
+[info] Epoch:  21 | train loss: -14.98 | time: 0.09
+[info] Epoch:  22 | train loss: -15.50 | time: 0.09
+[info] Epoch:  23 | train loss: -14.51 | time: 0.09
+[info] Epoch:  24 | train loss: -14.56 | time: 0.09
+[info] Epoch:  25 | train loss: -14.86 | time: 0.09
+[info] Epoch:  26 | train loss: -15.89 | time: 0.09
+[info] Epoch:  27 | train loss: -16.08 | time: 0.09
+[info] Epoch:  28 | train loss: -16.08 | time: 0.09
+[info] Epoch:  29 | train loss: -16.39 | time: 0.09
+[info] Epoch:  30 | train loss: -16.53 | time: 0.09
+[info] Epoch:  31 | train loss: -16.19 | time: 0.09
+[info] Epoch:  32 | train loss: -16.31 | time: 0.09
+[info] Epoch:  33 | train loss: -16.63 | time: 0.09
+[info] Epoch:  34 | train loss: -16.73 | time: 0.09
+[info] Epoch:  35 | train loss: -17.00 | time: 0.09
+[info] Epoch:  36 | train loss: -17.18 | time: 0.09
+[info] Epoch:  37 | train loss: -17.36 | time: 0.09
+[info] Epoch:  38 | train loss: -17.49 | time: 0.09
+[info] Epoch:  39 | train loss: -17.56 | time: 0.09
+[info] Epoch:  40 | train loss: -17.31 | time: 0.09
+[info] Epoch:  41 | train loss: -17.61 | time: 0.09
+[info] Epoch:  42 | train loss: -17.61 | time: 0.09
+[info] Epoch:  43 | train loss: -17.89 | time: 0.09
+[info] Epoch:  44 | train loss: -17.99 | time: 0.10
+[info] Epoch:  45 | train loss: -18.16 | time: 0.09
+[info] Epoch:  46 | train loss: -18.06 | time: 0.09
+[info] Epoch:  47 | train loss: -18.22 | time: 0.09
+[info] Epoch:  48 | train loss: -18.22 | time: 0.09
+[info] Epoch:  49 | train loss: -18.26 | time: 0.09
+[info] Epoch:  50 | train loss: -18.35 | time: 0.09
+Finish loading subtask_2:  62
+Subtask id: 2
+Subtask id: 3
+No Data on Subtask 3
+MetaPolicyDataset:  torch.Size([833])
+Error executing job with overrides: ['seed=1', 'benchmark_name=libero_goal_exp8', 'skill_learning.exp_name=dinov2_libero_goal_image_only_8', 'policy=bc_transformer_policy', 'lifelong=multitask_skill', 'exp=BUDS-single-er8', 'goal_modality=BUDS', 'pretrain_model_path=experiments/libero_goal_exp7/Multitask_Skill/dinov2_libero_goal_image_only_7_seed1/BUDS-single-er7_run_001']
+Traceback (most recent call last):
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/main.py", line 301, in main
+    meta_policy.load_meta_policy(experiment_dir=cfg.pretrain_model_path)
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/algos/skill.py", line 593, in load_meta_policy
+    self.policy.load_state_dict(torch_load_model(model_checkpoint_name)[0])
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/utils.py", line 86, in torch_load_model
+    model_dict = torch.load(model_path, map_location=map_location)
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/serialization.py", line 791, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/serialization.py", line 271, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/serialization.py", line 252, in __init__
+    super().__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: 'experiments/libero_goal_exp7/Multitask_Skill/dinov2_libero_goal_image_only_7_seed1/BUDS-single-er7_run_001/meta_controller_model_ep50.pth'
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: Skill_Training/skill0_training_loss ██▆▆▆▅▅▅▄▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▁▂▂▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: Skill_Training/skill0_training_time ▁▆▆▆▆▆▆▆▇▇██▇▆▆▇▇▆▆▇▆▆▆▆▆▆▆▆▆▆▆▆▇▇█▆▆▆▇▆
+wandb: Skill_Training/skill1_training_loss ▂█▃▃▃▂▂▂▂▂▃▂▂▂▂▂▂▂▂▂▂▂▂▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: Skill_Training/skill1_training_time ▁▇▇▇▇█▇▇▇█▇▇█▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇█▇▇▇▇
+wandb:                 Skill_Training/step ▁▁▂▂▂▃▃▄▄▄▅▅▅▆▆▆▇▇▇█▁▁▂▂▃▃▃▄▄▄▅▅▅▆▆▆▇▇██
+wandb: 
+wandb: Run summary:
+wandb: Skill_Training/skill0_training_loss -15.69716
+wandb: Skill_Training/skill0_training_time 0.04593
+wandb: Skill_Training/skill1_training_loss -18.34673
+wandb: Skill_Training/skill1_training_time 0.09129
+wandb:                 Skill_Training/step 50
+wandb: 
+wandb: Synced vague-dream-8: https://wandb.ai/pz1004/lifelong%20learning/runs/cr3f8wmn
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250704_005754-cr3f8wmn/logs
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/pz1004/Workspaces/robosuite-v141/robosuite/scripts/setup_macros.py (macros.py:55)
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(torch.__version__) < LooseVersion("1.0.0"):
+{ 'bddl_folder': './libero/bddl_files',
+  'benchmark_name': 'libero_goal_exp9',
+  'data': { 'action_scale': 1.0,
+            'affine_translate': 4,
+            'data_modality': ['image', 'proprio'],
+            'frame_stack': 1,
+            'img_h': 128,
+            'img_w': 128,
+            'max_word_len': 25,
+            'num_kp': 64,
+            'obs': { 'modality': { 'depth': [],
+                                   'low_dim': [ 'gripper_states',
+                                                'joint_states'],
+                                   'rgb': [ 'agentview_rgb',
+                                            'eye_in_hand_rgb']}},
+            'obs_key_mapping': { 'agentview_rgb': 'agentview_image',
+                                 'eye_in_hand_rgb': 'robot0_eye_in_hand_image',
+                                 'gripper_states': 'robot0_gripper_qpos',
+                                 'joint_states': 'robot0_joint_pos'},
+            'seq_len': 10,
+            'shuffle_task': False,
+            'state_dim': None,
+            'task_group_size': 1,
+            'task_order_index': 0,
+            'train_dataset_ratio': 0.8,
+            'use_ee': False,
+            'use_eye_in_hand': True,
+            'use_gripper': True,
+            'use_joint': True},
+  'device': 'cuda',
+  'eval': { 'batch_size': 64,
+            'eval': True,
+            'eval_every': 5,
+            'load_path': '',
+            'max_steps': 600,
+            'n_eval': 20,
+            'num_procs': 20,
+            'num_workers': 4,
+            'save_sim_states': False,
+            'use_mp': True},
+  'exp': 'BUDS-single-er9',
+  'folder': './datasets',
+  'goal_modality': 'BUDS',
+  'init_states_folder': './libero/init_files',
+  'lifelong': {'algo': 'Multitask_Skill', 'eval_in_train': True},
+  'load_previous_model': False,
+  'meta': { 'color_aug': { 'network': 'BatchWiseImgColorJitterAug',
+                           'network_kwargs': { 'brightness': 0.3,
+                                               'contrast': 0.3,
+                                               'epsilon': 0.1,
+                                               'hue': 0.3,
+                                               'input_shape': None,
+                                               'saturation': 0.3}},
+            'embed_size': 64,
+            'extra_hidden_size': 128,
+            'extra_num_layers': 0,
+            'image_encoder': { 'network': 'ResnetEncoder',
+                               'network_kwargs': { 'freeze': False,
+                                                   'language_fusion': 'film',
+                                                   'no_stride': False,
+                                                   'pretrained': False,
+                                                   'remove_layer_num': 4}},
+            'language_encoder': { 'network': 'MLPEncoder',
+                                  'network_kwargs': { 'hidden_size': 128,
+                                                      'input_size': 768,
+                                                      'num_layers': 1,
+                                                      'output_size': 128}},
+            'policy_head': { 'loss_kwargs': {'loss_coef': 1.0},
+                             'network': 'GMMHead',
+                             'network_kwargs': { 'activation': 'softplus',
+                                                 'hidden_size': 1024,
+                                                 'low_eval_noise': False,
+                                                 'min_std': 0.0001,
+                                                 'num_layers': 2,
+                                                 'num_modes': 5}},
+            'policy_type': 'BCTransformerPolicy',
+            'temporal_position_encoding': { 'network': 'SinusoidalPositionEncoding',
+                                            'network_kwargs': { 'factor_ratio': None,
+                                                                'input_size': None,
+                                                                'inv_freq_factor': 10}},
+            'transformer_dropout': 0.1,
+            'transformer_head_output_size': 64,
+            'transformer_input_size': None,
+            'transformer_max_seq_len': 10,
+            'transformer_mlp_hidden_size': 256,
+            'transformer_num_heads': 6,
+            'transformer_num_layers': 4,
+            'translation_aug': { 'network': 'TranslationAug',
+                                 'network_kwargs': { 'input_shape': None,
+                                                     'translation': 8}}},
+  'policy': { 'color_aug': { 'network': 'BatchWiseImgColorJitterAug',
+                             'network_kwargs': { 'brightness': 0.3,
+                                                 'contrast': 0.3,
+                                                 'epsilon': 0.1,
+                                                 'hue': 0.3,
+                                                 'input_shape': None,
+                                                 'saturation': 0.3}},
+              'embed_size': 64,
+              'extra_hidden_size': 128,
+              'extra_num_layers': 0,
+              'image_encoder': { 'network': 'ResnetEncoder',
+                                 'network_kwargs': { 'freeze': False,
+                                                     'language_fusion': 'film',
+                                                     'no_stride': False,
+                                                     'pretrained': False,
+                                                     'remove_layer_num': 4}},
+              'language_encoder': { 'network': 'MLPEncoder',
+                                    'network_kwargs': { 'hidden_size': 128,
+                                                        'input_size': 768,
+                                                        'num_layers': 1,
+                                                        'output_size': 128}},
+              'policy_head': { 'loss_kwargs': {'loss_coef': 1.0},
+                               'network': 'GMMHead',
+                               'network_kwargs': { 'activation': 'softplus',
+                                                   'hidden_size': 1024,
+                                                   'low_eval_noise': False,
+                                                   'min_std': 0.0001,
+                                                   'num_layers': 2,
+                                                   'num_modes': 5}},
+              'policy_type': 'BCTransformerPolicy',
+              'temporal_position_encoding': { 'network': 'SinusoidalPositionEncoding',
+                                              'network_kwargs': { 'factor_ratio': None,
+                                                                  'input_size': None,
+                                                                  'inv_freq_factor': 10}},
+              'transformer_dropout': 0.1,
+              'transformer_head_output_size': 64,
+              'transformer_input_size': None,
+              'transformer_max_seq_len': 10,
+              'transformer_mlp_hidden_size': 256,
+              'transformer_num_heads': 6,
+              'transformer_num_layers': 4,
+              'translation_aug': { 'network': 'TranslationAug',
+                                   'network_kwargs': { 'input_shape': None,
+                                                       'translation': 8}}},
+  'pretrain': False,
+  'pretrain_model_path': 'experiments/libero_goal_exp8/Multitask_Skill/dinov2_libero_goal_image_only_8_seed1/BUDS-single-er8_run_001',
+  'seed': 1,
+  'skill_learning': { 'agglomoration': { 'K': 5,
+                                         'affinity': 'rbf',
+                                         'agglomoration_step': 10,
+                                         'dist': 'l2',
+                                         'footprint': 'mean',
+                                         'min_len_thresh': 20,
+                                         'scale': 0.05,
+                                         'segment_footprint': 'concat_1',
+                                         'segment_scale': 2,
+                                         'visualization': False},
+                      'eval': {'meta_freq': 5},
+                      'exp_name': 'dinov2_libero_goal_image_only_9',
+                      'folder': './',
+                      'hydra': {'run': {'dir': '.'}},
+                      'meta': { 'activation': 'leaky-relu',
+                                'affine_translate': 4,
+                                'batch_size': 100,
+                                'embedding_layer_dims': [300, 400],
+                                'id_layer_dims': [300, 400],
+                                'img_h': 128,
+                                'img_w': 128,
+                                'lr': 0.0001,
+                                'num_epochs': 1001,
+                                'num_kp': 64,
+                                'num_workers': 0,
+                                'random_affine': False,
+                                'rnn_hidden_dim': 100,
+                                'rnn_num_layers': 2,
+                                'separate_id_prediction': False,
+                                'use_cvae': True,
+                                'use_eye_in_hand': False,
+                                'use_rnn': False,
+                                'use_spatial_softmax': False,
+                                'visual_feature_dimension': 64},
+                      'meta_cvae_cfg': { 'enable': True,
+                                         'kl_coeff': 0.01,
+                                         'latent_dim': 64},
+                      'modality_str': 'dinov2_agentview_eye_in_hand',
+                      'multitask': { 'skip_task_id': [5, 6, 8],
+                                     'task_id': 0,
+                                     'testing_percentage': 1.0,
+                                     'training_task_id': -1},
+                      'record_states': True,
+                      'repr': { 'alpha_kl': 0.05,
+                                'modalities': [ 'agentview',
+                                                'eye_in_hand',
+                                                'proprio'],
+                                'no_skip': True,
+                                'z_dim': 32},
+                      'skill_subgoal_cfg': { 'horizon': 30,
+                                             'subgoal_type': 'linear',
+                                             'use_eye_in_hand': False,
+                                             'use_final_goal': False,
+                                             'use_spatial_softmax': True,
+                                             'visual_feature_dimension': 32},
+                      'skill_training': { 'action_squash': True,
+                                          'activation': 'leaky-relu',
+                                          'affine_translate': 4,
+                                          'agglomoration': {'K': 5},
+                                          'batch_size': 128,
+                                          'data_modality': ['image', 'proprio'],
+                                          'gripper_smoothing': False,
+                                          'img_h': 128,
+                                          'img_w': 128,
+                                          'lr': 0.001,
+                                          'min_lr': 0.0001,
+                                          'no_skip': True,
+                                          'num_epochs': 1001,
+                                          'num_kp': 64,
+                                          'num_workers': 0,
+                                          'policy_layer_dims': [300, 400],
+                                          'policy_type': 'normal_subgoal',
+                                          'random_affine': True,
+                                          'rnn_encoder_mlp_dims': [128, 128],
+                                          'rnn_hidden_dim': 100,
+                                          'rnn_loss_reduction': 'mean',
+                                          'rnn_num_layers': 2,
+                                          'run_idx': 0,
+                                          'state_dim': 37,
+                                          'subtask_id': [],
+                                          'use_changepoint': False,
+                                          'use_eye_in_hand': True,
+                                          'use_gripper': True,
+                                          'use_joints': True,
+                                          'use_rnn': False,
+                                          'visual_feature_dimension': 64},
+                      'use_checkpoint': False,
+                      'verbose': True,
+                      'video': { 'demo_output_dir': 'paper_vis/demo_videos/defaults',
+                                 'dir': '',
+                                 'fps': 60,
+                                 'height': 1024,
+                                 'output_dir': 'paper_vis/videos/defaults',
+                                 'width': 1024}},
+  'task_embedding_format': 'bert',
+  'task_embedding_one_hot_offset': 1,
+  'train': { 'batch_size': 32,
+             'debug': False,
+             'grad_clip': 100.0,
+             'loss_scale': 1.0,
+             'n_epochs': 50,
+             'num_workers': 4,
+             'optimizer': { 'kwargs': { 'betas': [0.9, 0.999],
+                                        'lr': 0.0001,
+                                        'weight_decay': 0.0001},
+                            'name': 'torch.optim.AdamW'},
+             'resume': False,
+             'resume_path': '',
+             'scheduler': { 'kwargs': {'eta_min': 1e-05, 'last_epoch': -1},
+                            'name': 'torch.optim.lr_scheduler.CosineAnnealingLR'},
+             'use_augmentation': True},
+  'use_wandb': True,
+  'wandb_project': 'lifelong learning'}
+'Available algorithms:'
+{ 'agem': <class 'lotus.lifelong.algos.agem.AGEM'>,
+  'er': <class 'lotus.lifelong.algos.er.ER'>,
+  'ewc': <class 'lotus.lifelong.algos.ewc.EWC'>,
+  'metacontroller': <class 'lotus.lifelong.algos.skill.MetaController'>,
+  'multitask': <class 'lotus.lifelong.algos.multitask.Multitask'>,
+  'packnet': <class 'lotus.lifelong.algos.packnet.PackNet'>,
+  'sequential': <class 'lotus.lifelong.algos.base.Sequential'>,
+  'singletask': <class 'lotus.lifelong.algos.single_task.SingleTask'>,
+  'subskill': <class 'lotus.lifelong.algos.skill.SubSkill'>}
+'Available policies:'
+{ 'bcrnnpolicy': <class 'lotus.lifelong.models.bc_rnn_policy.BCRNNPolicy'>,
+  'bctransformerpolicy': <class 'lotus.lifelong.models.bc_transformer_policy.BCTransformerPolicy'>,
+  'bctransformerskillpolicy': <class 'lotus.lifelong.models.bc_transformer_policy.BCTransformerSkillPolicy'>,
+  'bcviltpolicy': <class 'lotus.lifelong.models.bc_vilt_policy.BCViLTPolicy'>}
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: rgb with keys: ['eye_in_hand_rgb', 'agentview_rgb']
+using obs modality: depth with keys: []
+using obs modality: low_dim with keys: ['gripper_states', 'joint_states']
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3013.84it/s]
+./datasets/libero_goal/open_the_middle_drawer_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3437.11it/s]
+./datasets/libero_goal/put_the_bowl_on_the_stove_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3872.14it/s]
+./datasets/libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3694.77it/s]
+./datasets/libero_goal/open_the_top_drawer_and_put_the_bowl_inside_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3869.86it/s]
+./datasets/libero_goal/put_the_bowl_on_top_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3766.10it/s]
+./datasets/libero_goal/push_the_plate_to_the_front_of_the_stove_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3978.28it/s]
+./datasets/libero_goal/put_the_cream_cheese_in_the_bowl_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3801.12it/s]
+./datasets/libero_goal/turn_on_the_stove_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3924.31it/s]
+./datasets/libero_goal/put_the_bowl_on_the_plate_demo.hdf5
+subtasks distance score: 0.1526530612244898
+/home/pz1004/Workspaces/Lotus/lotus/lifelong/datasets.py:563: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  if 'segmentation' in subtasks_f['subtasks'][key]:
+subtasks distance score: 0.0
+subtasks distance score: 0.48244897959183675
+subtasks distance score: 0.0
+subtasks distance score: 0.0
+subtasks distance score: 0.5428571428571428
+subtasks distance score: 0.04
+subtasks distance score: 0.0
+subtasks distance score: 0.5371428571428571
+train_dataset_id: [0, 1, 2, 4]
+
+=================== Lifelong Benchmark Information  ===================
+ Name: libero_goal
+ # Tasks: 9
+    - Task 1:
+        open the middle drawer of the cabinet
+    - Task 2:
+        put the bowl on the stove
+    - Task 3:
+        put the wine bottle on top of the cabinet
+    - Task 4:
+        open the top drawer and put the bowl inside
+    - Task 5:
+        put the bowl on top of the cabinet
+    - Task 6:
+        push the plate to the front of the stove
+    - Task 7:
+        put the cream cheese in the bowl
+    - Task 8:
+        turn on the stove
+    - Task 9:
+        put the bowl on the plate
+=======================================================================
+
+wandb: Currently logged in as: pz1004. Use `wandb login --relogin` to force relogin
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/wandb/util.py:249: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  scope.user = {"email": s.email}
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/wandb/util.py:249: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  scope.user = {"email": s.email}
+wandb: wandb version 0.21.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.13.1
+wandb: Run data is saved locally in /home/pz1004/Workspaces/Lotus/lotus/wandb/run-20250704_010600-sh21kol0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run comfy-vortex-9
+wandb: ⭐️ View project at https://wandb.ai/pz1004/lifelong%20learning
+wandb: 🚀 View run at https://wandb.ai/pz1004/lifelong%20learning/runs/sh21kol0
+Finish loading subtask_0:  262
+Subtask id: 0
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3483.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[info] start training skill 0
+[info] Epoch:   0 | train loss: -15.51 | time: 0.03
+[info] Epoch:   1 | train loss: 73.91 | time: 0.05
+[info] Epoch:   2 | train loss: -8.02 | time: 0.05
+[info] Epoch:   3 | train loss: -8.99 | time: 0.04
+[info] Epoch:   4 | train loss: -10.71 | time: 0.05
+[info] Epoch:   5 | train loss: -9.20 | time: 0.04
+[info] Epoch:   6 | train loss: -10.88 | time: 0.05
+[info] Epoch:   7 | train loss: -12.08 | time: 0.05
+[info] Epoch:   8 | train loss: -12.34 | time: 0.05
+[info] Epoch:   9 | train loss: -13.48 | time: 0.05
+[info] Epoch:  10 | train loss: -11.55 | time: 0.05
+[info] Epoch:  11 | train loss: -13.28 | time: 0.05
+[info] Epoch:  12 | train loss: -13.54 | time: 0.05
+[info] Epoch:  13 | train loss: -14.40 | time: 0.05
+[info] Epoch:  14 | train loss: -14.37 | time: 0.05
+[info] Epoch:  15 | train loss: -14.69 | time: 0.05
+[info] Epoch:  16 | train loss: -14.82 | time: 0.05
+[info] Epoch:  17 | train loss: -14.88 | time: 0.05
+[info] Epoch:  18 | train loss: -14.57 | time: 0.05
+[info] Epoch:  19 | train loss: -14.42 | time: 0.05
+[info] Epoch:  20 | train loss: -15.04 | time: 0.05
+[info] Epoch:  21 | train loss: -15.33 | time: 0.05
+[info] Epoch:  22 | train loss: -15.21 | time: 0.05
+[info] Epoch:  23 | train loss: -14.97 | time: 0.05
+[info] Epoch:  24 | train loss: -15.74 | time: 0.05
+[info] Epoch:  25 | train loss: -15.32 | time: 0.05
+[info] Epoch:  26 | train loss: -16.34 | time: 0.05
+[info] Epoch:  27 | train loss: -16.57 | time: 0.05
+[info] Epoch:  28 | train loss: -15.55 | time: 0.05
+[info] Epoch:  29 | train loss: -16.18 | time: 0.05
+[info] Epoch:  30 | train loss: -16.48 | time: 0.05
+[info] Epoch:  31 | train loss: -16.90 | time: 0.05
+[info] Epoch:  32 | train loss: -16.80 | time: 0.05
+[info] Epoch:  33 | train loss: -16.92 | time: 0.05
+[info] Epoch:  34 | train loss: -16.84 | time: 0.05
+[info] Epoch:  35 | train loss: -16.25 | time: 0.05
+[info] Epoch:  36 | train loss: -17.14 | time: 0.05
+[info] Epoch:  37 | train loss: -16.92 | time: 0.05
+[info] Epoch:  38 | train loss: -17.04 | time: 0.05
+[info] Epoch:  39 | train loss: -17.29 | time: 0.05
+[info] Epoch:  40 | train loss: -17.52 | time: 0.05
+[info] Epoch:  41 | train loss: -17.48 | time: 0.05
+[info] Epoch:  42 | train loss: -17.94 | time: 0.05
+[info] Epoch:  43 | train loss: -17.75 | time: 0.05
+[info] Epoch:  44 | train loss: -17.90 | time: 0.05
+[info] Epoch:  45 | train loss: -18.06 | time: 0.05
+[info] Epoch:  46 | train loss: -17.38 | time: 0.05
+[info] Epoch:  47 | train loss: -18.10 | time: 0.05
+[info] Epoch:  48 | train loss: -18.27 | time: 0.05
+[info] Epoch:  49 | train loss: -18.21 | time: 0.05
+[info] Epoch:  50 | train loss: -18.22 | time: 0.05
+Finish loading subtask_1:  562
+Subtask id: 1
+[info] start training skill 1
+[info] Epoch:   0 | train loss: -9.18 | time: 0.04
+[info] Epoch:   1 | train loss:  1.32 | time: 0.10
+[info] Epoch:   2 | train loss: -3.94 | time: 0.10
+[info] Epoch:   3 | train loss: -10.08 | time: 0.10
+[info] Epoch:   4 | train loss: -12.73 | time: 0.10
+[info] Epoch:   5 | train loss: -13.52 | time: 0.10
+[info] Epoch:   6 | train loss: -13.62 | time: 0.10
+[info] Epoch:   7 | train loss: -14.00 | time: 0.10
+[info] Epoch:   8 | train loss: -15.21 | time: 0.10
+[info] Epoch:   9 | train loss: -15.25 | time: 0.11
+[info] Epoch:  10 | train loss: -15.96 | time: 0.10
+[info] Epoch:  11 | train loss: -15.87 | time: 0.10
+[info] Epoch:  12 | train loss: -15.21 | time: 0.10
+[info] Epoch:  13 | train loss: -15.75 | time: 0.10
+[info] Epoch:  14 | train loss: -16.33 | time: 0.10
+[info] Epoch:  15 | train loss: -16.06 | time: 0.10
+[info] Epoch:  16 | train loss: -16.42 | time: 0.10
+[info] Epoch:  17 | train loss: -16.75 | time: 0.11
+[info] Epoch:  18 | train loss: -15.48 | time: 0.10
+[info] Epoch:  19 | train loss: -16.68 | time: 0.10
+[info] Epoch:  20 | train loss: -17.11 | time: 0.10
+[info] Epoch:  21 | train loss: -17.53 | time: 0.10
+[info] Epoch:  22 | train loss: -17.59 | time: 0.10
+[info] Epoch:  23 | train loss: -17.69 | time: 0.10
+[info] Epoch:  24 | train loss: -17.78 | time: 0.10
+[info] Epoch:  25 | train loss: -18.04 | time: 0.10
+[info] Epoch:  26 | train loss: -17.42 | time: 0.10
+[info] Epoch:  27 | train loss: -17.38 | time: 0.10
+[info] Epoch:  28 | train loss: -17.85 | time: 0.10
+[info] Epoch:  29 | train loss: -18.40 | time: 0.10
+[info] Epoch:  30 | train loss: -18.41 | time: 0.10
+[info] Epoch:  31 | train loss: -18.35 | time: 0.10
+[info] Epoch:  32 | train loss: -18.41 | time: 0.10
+[info] Epoch:  33 | train loss: -19.07 | time: 0.10
+[info] Epoch:  34 | train loss: -19.25 | time: 0.10
+[info] Epoch:  35 | train loss: -19.09 | time: 0.10
+[info] Epoch:  36 | train loss: -19.25 | time: 0.10
+[info] Epoch:  37 | train loss: -19.58 | time: 0.10
+[info] Epoch:  38 | train loss: -19.73 | time: 0.10
+[info] Epoch:  39 | train loss: -19.51 | time: 0.10
+[info] Epoch:  40 | train loss: -19.82 | time: 0.10
+[info] Epoch:  41 | train loss: -20.11 | time: 0.10
+[info] Epoch:  42 | train loss: -20.11 | time: 0.10
+[info] Epoch:  43 | train loss: -20.08 | time: 0.10
+[info] Epoch:  44 | train loss: -20.18 | time: 0.10
+[info] Epoch:  45 | train loss: -20.27 | time: 0.10
+[info] Epoch:  46 | train loss: -20.36 | time: 0.10
+[info] Epoch:  47 | train loss: -20.26 | time: 0.10
+[info] Epoch:  48 | train loss: -20.38 | time: 0.10
+[info] Epoch:  49 | train loss: -20.38 | time: 0.10
+[info] Epoch:  50 | train loss: -20.54 | time: 0.10
+Finish loading subtask_2:  62
+Subtask id: 2
+[info] start training skill 2
+[info] Epoch:   0 | train loss:  5.44 | time: 0.00
+[info] Epoch:   1 | train loss:  5.31 | time: 0.01
+[info] Epoch:   2 | train loss:  4.65 | time: 0.01
+[info] Epoch:   3 | train loss:  3.86 | time: 0.01
+[info] Epoch:   4 | train loss:  2.76 | time: 0.01
+[info] Epoch:   5 | train loss:  1.20 | time: 0.01
+[info] Epoch:   6 | train loss: -0.89 | time: 0.01
+[info] Epoch:   7 | train loss: -0.40 | time: 0.01
+[info] Epoch:   8 | train loss:  1.21 | time: 0.01
+[info] Epoch:   9 | train loss:  0.26 | time: 0.01
+[info] Epoch:  10 | train loss: -0.21 | time: 0.01
+[info] Epoch:  11 | train loss:  0.68 | time: 0.01
+[info] Epoch:  12 | train loss:  0.42 | time: 0.01
+[info] Epoch:  13 | train loss:  0.38 | time: 0.01
+[info] Epoch:  14 | train loss:  0.61 | time: 0.01
+[info] Epoch:  15 | train loss: -0.50 | time: 0.01
+[info] Epoch:  16 | train loss: -0.96 | time: 0.01
+[info] Epoch:  17 | train loss: -1.01 | time: 0.01
+[info] Epoch:  18 | train loss: -1.57 | time: 0.01
+[info] Epoch:  19 | train loss: -1.79 | time: 0.01
+[info] Epoch:  20 | train loss: -0.67 | time: 0.01
+[info] Epoch:  21 | train loss: -1.69 | time: 0.01
+[info] Epoch:  22 | train loss: -0.41 | time: 0.01
+[info] Epoch:  23 | train loss: -1.58 | time: 0.01
+[info] Epoch:  24 | train loss:  0.31 | time: 0.01
+[info] Epoch:  25 | train loss:  0.09 | time: 0.01
+[info] Epoch:  26 | train loss: -0.47 | time: 0.01
+[info] Epoch:  27 | train loss: -0.02 | time: 0.01
+[info] Epoch:  28 | train loss: -1.86 | time: 0.01
+[info] Epoch:  29 | train loss: -1.95 | time: 0.01
+[info] Epoch:  30 | train loss: -1.92 | time: 0.01
+[info] Epoch:  31 | train loss: -2.22 | time: 0.01
+[info] Epoch:  32 | train loss: -2.26 | time: 0.01
+[info] Epoch:  33 | train loss: -2.56 | time: 0.01
+[info] Epoch:  34 | train loss: -2.89 | time: 0.01
+[info] Epoch:  35 | train loss: -3.08 | time: 0.01
+[info] Epoch:  36 | train loss: -3.34 | time: 0.01
+[info] Epoch:  37 | train loss: -3.62 | time: 0.01
+[info] Epoch:  38 | train loss: -3.79 | time: 0.01
+[info] Epoch:  39 | train loss: -3.92 | time: 0.01
+[info] Epoch:  40 | train loss: -4.11 | time: 0.01
+[info] Epoch:  41 | train loss: -4.09 | time: 0.01
+[info] Epoch:  42 | train loss: -4.16 | time: 0.01
+[info] Epoch:  43 | train loss: -4.38 | time: 0.01
+[info] Epoch:  44 | train loss: -4.28 | time: 0.01
+[info] Epoch:  45 | train loss: -4.53 | time: 0.01
+[info] Epoch:  46 | train loss: -4.49 | time: 0.01
+[info] Epoch:  47 | train loss: -4.43 | time: 0.01
+[info] Epoch:  48 | train loss: -4.66 | time: 0.01
+[info] Epoch:  49 | train loss: -4.54 | time: 0.01
+[info] Epoch:  50 | train loss: -4.59 | time: 0.01
+Finish loading subtask_3:  30
+Subtask id: 3
+Subtask id: 4
+No Data on Subtask 4
+MetaPolicyDataset:  torch.Size([913])
+Error executing job with overrides: ['seed=1', 'benchmark_name=libero_goal_exp9', 'skill_learning.exp_name=dinov2_libero_goal_image_only_9', 'policy=bc_transformer_policy', 'lifelong=multitask_skill', 'exp=BUDS-single-er9', 'goal_modality=BUDS', 'pretrain_model_path=experiments/libero_goal_exp8/Multitask_Skill/dinov2_libero_goal_image_only_8_seed1/BUDS-single-er8_run_001']
+Traceback (most recent call last):
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/main.py", line 301, in main
+    meta_policy.load_meta_policy(experiment_dir=cfg.pretrain_model_path)
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/algos/skill.py", line 593, in load_meta_policy
+    self.policy.load_state_dict(torch_load_model(model_checkpoint_name)[0])
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/utils.py", line 86, in torch_load_model
+    model_dict = torch.load(model_path, map_location=map_location)
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/serialization.py", line 791, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/serialization.py", line 271, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/serialization.py", line 252, in __init__
+    super().__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: 'experiments/libero_goal_exp8/Multitask_Skill/dinov2_libero_goal_image_only_8_seed1/BUDS-single-er8_run_001/meta_controller_model_ep50.pth'
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: Skill_Training/skill0_training_loss ▁█▂▂▂▂▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: Skill_Training/skill0_training_time ▁▆▆▆▆▆▆▆▇█▆▇▇▇▆▆▇▆▇▆▆▆▆▇▆▇▆▆▇▆▆▆▆▆▆▆▇▇▆▆
+wandb: Skill_Training/skill1_training_loss ▅█▆▄▃▃▃▃▂▂▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: Skill_Training/skill1_training_time ▁▇█▇▇█▇███▇▇█▇███▇█▇▇██▇██▇█▇█▇██▇█▇██▇█
+wandb: Skill_Training/skill2_training_loss ██▇▇▅▄▄▅▄▅▅▅▄▄▄▃▄▃▃▄▄▄▃▃▃▃▂▂▂▂▂▂▁▁▁▁▁▁▁▁
+wandb: Skill_Training/skill2_training_time ▁▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆█▆▆▆▆▆▆▆▆▆▆▆▆▇▇▆▆▆▆▆▆▆▇
+wandb:                 Skill_Training/step ▁▁▂▃▃▄▄▅▅▆▆▇█▁▁▂▂▃▄▄▅▅▆▆▇▇█▁▂▂▃▃▄▅▅▆▆▇▇█
+wandb: 
+wandb: Run summary:
+wandb: Skill_Training/skill0_training_loss -18.21557
+wandb: Skill_Training/skill0_training_time 0.04605
+wandb: Skill_Training/skill1_training_loss -20.54307
+wandb: Skill_Training/skill1_training_time 0.10324
+wandb: Skill_Training/skill2_training_loss -4.59057
+wandb: Skill_Training/skill2_training_time 0.01251
+wandb:                 Skill_Training/step 50
+wandb: 
+wandb: Synced comfy-vortex-9: https://wandb.ai/pz1004/lifelong%20learning/runs/sh21kol0
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250704_010600-sh21kol0/logs
+[robosuite WARNING] No private macro file found! (macros.py:53)
+[robosuite WARNING] It is recommended to use a private macro file (macros.py:54)
+[robosuite WARNING] To setup, run: python /home/pz1004/Workspaces/robosuite-v141/robosuite/scripts/setup_macros.py (macros.py:55)
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/thop/profile.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  if LooseVersion(torch.__version__) < LooseVersion("1.0.0"):
+{ 'bddl_folder': './libero/bddl_files',
+  'benchmark_name': 'libero_goal_exp10',
+  'data': { 'action_scale': 1.0,
+            'affine_translate': 4,
+            'data_modality': ['image', 'proprio'],
+            'frame_stack': 1,
+            'img_h': 128,
+            'img_w': 128,
+            'max_word_len': 25,
+            'num_kp': 64,
+            'obs': { 'modality': { 'depth': [],
+                                   'low_dim': [ 'gripper_states',
+                                                'joint_states'],
+                                   'rgb': [ 'agentview_rgb',
+                                            'eye_in_hand_rgb']}},
+            'obs_key_mapping': { 'agentview_rgb': 'agentview_image',
+                                 'eye_in_hand_rgb': 'robot0_eye_in_hand_image',
+                                 'gripper_states': 'robot0_gripper_qpos',
+                                 'joint_states': 'robot0_joint_pos'},
+            'seq_len': 10,
+            'shuffle_task': False,
+            'state_dim': None,
+            'task_group_size': 1,
+            'task_order_index': 0,
+            'train_dataset_ratio': 0.8,
+            'use_ee': False,
+            'use_eye_in_hand': True,
+            'use_gripper': True,
+            'use_joint': True},
+  'device': 'cuda',
+  'eval': { 'batch_size': 64,
+            'eval': True,
+            'eval_every': 5,
+            'load_path': '',
+            'max_steps': 600,
+            'n_eval': 20,
+            'num_procs': 20,
+            'num_workers': 4,
+            'save_sim_states': False,
+            'use_mp': True},
+  'exp': 'BUDS-single-er10',
+  'folder': './datasets',
+  'goal_modality': 'BUDS',
+  'init_states_folder': './libero/init_files',
+  'lifelong': {'algo': 'Multitask_Skill', 'eval_in_train': True},
+  'load_previous_model': False,
+  'meta': { 'color_aug': { 'network': 'BatchWiseImgColorJitterAug',
+                           'network_kwargs': { 'brightness': 0.3,
+                                               'contrast': 0.3,
+                                               'epsilon': 0.1,
+                                               'hue': 0.3,
+                                               'input_shape': None,
+                                               'saturation': 0.3}},
+            'embed_size': 64,
+            'extra_hidden_size': 128,
+            'extra_num_layers': 0,
+            'image_encoder': { 'network': 'ResnetEncoder',
+                               'network_kwargs': { 'freeze': False,
+                                                   'language_fusion': 'film',
+                                                   'no_stride': False,
+                                                   'pretrained': False,
+                                                   'remove_layer_num': 4}},
+            'language_encoder': { 'network': 'MLPEncoder',
+                                  'network_kwargs': { 'hidden_size': 128,
+                                                      'input_size': 768,
+                                                      'num_layers': 1,
+                                                      'output_size': 128}},
+            'policy_head': { 'loss_kwargs': {'loss_coef': 1.0},
+                             'network': 'GMMHead',
+                             'network_kwargs': { 'activation': 'softplus',
+                                                 'hidden_size': 1024,
+                                                 'low_eval_noise': False,
+                                                 'min_std': 0.0001,
+                                                 'num_layers': 2,
+                                                 'num_modes': 5}},
+            'policy_type': 'BCTransformerPolicy',
+            'temporal_position_encoding': { 'network': 'SinusoidalPositionEncoding',
+                                            'network_kwargs': { 'factor_ratio': None,
+                                                                'input_size': None,
+                                                                'inv_freq_factor': 10}},
+            'transformer_dropout': 0.1,
+            'transformer_head_output_size': 64,
+            'transformer_input_size': None,
+            'transformer_max_seq_len': 10,
+            'transformer_mlp_hidden_size': 256,
+            'transformer_num_heads': 6,
+            'transformer_num_layers': 4,
+            'translation_aug': { 'network': 'TranslationAug',
+                                 'network_kwargs': { 'input_shape': None,
+                                                     'translation': 8}}},
+  'policy': { 'color_aug': { 'network': 'BatchWiseImgColorJitterAug',
+                             'network_kwargs': { 'brightness': 0.3,
+                                                 'contrast': 0.3,
+                                                 'epsilon': 0.1,
+                                                 'hue': 0.3,
+                                                 'input_shape': None,
+                                                 'saturation': 0.3}},
+              'embed_size': 64,
+              'extra_hidden_size': 128,
+              'extra_num_layers': 0,
+              'image_encoder': { 'network': 'ResnetEncoder',
+                                 'network_kwargs': { 'freeze': False,
+                                                     'language_fusion': 'film',
+                                                     'no_stride': False,
+                                                     'pretrained': False,
+                                                     'remove_layer_num': 4}},
+              'language_encoder': { 'network': 'MLPEncoder',
+                                    'network_kwargs': { 'hidden_size': 128,
+                                                        'input_size': 768,
+                                                        'num_layers': 1,
+                                                        'output_size': 128}},
+              'policy_head': { 'loss_kwargs': {'loss_coef': 1.0},
+                               'network': 'GMMHead',
+                               'network_kwargs': { 'activation': 'softplus',
+                                                   'hidden_size': 1024,
+                                                   'low_eval_noise': False,
+                                                   'min_std': 0.0001,
+                                                   'num_layers': 2,
+                                                   'num_modes': 5}},
+              'policy_type': 'BCTransformerPolicy',
+              'temporal_position_encoding': { 'network': 'SinusoidalPositionEncoding',
+                                              'network_kwargs': { 'factor_ratio': None,
+                                                                  'input_size': None,
+                                                                  'inv_freq_factor': 10}},
+              'transformer_dropout': 0.1,
+              'transformer_head_output_size': 64,
+              'transformer_input_size': None,
+              'transformer_max_seq_len': 10,
+              'transformer_mlp_hidden_size': 256,
+              'transformer_num_heads': 6,
+              'transformer_num_layers': 4,
+              'translation_aug': { 'network': 'TranslationAug',
+                                   'network_kwargs': { 'input_shape': None,
+                                                       'translation': 8}}},
+  'pretrain': False,
+  'pretrain_model_path': 'experiments/libero_goal_exp9/Multitask_Skill/dinov2_libero_goal_image_only_9_seed1/BUDS-single-er9_run_001',
+  'seed': 1,
+  'skill_learning': { 'agglomoration': { 'K': 5,
+                                         'affinity': 'rbf',
+                                         'agglomoration_step': 10,
+                                         'dist': 'l2',
+                                         'footprint': 'mean',
+                                         'min_len_thresh': 20,
+                                         'scale': 0.05,
+                                         'segment_footprint': 'concat_1',
+                                         'segment_scale': 2,
+                                         'visualization': False},
+                      'eval': {'meta_freq': 5},
+                      'exp_name': 'dinov2_libero_goal_image_only_10',
+                      'folder': './',
+                      'hydra': {'run': {'dir': '.'}},
+                      'meta': { 'activation': 'leaky-relu',
+                                'affine_translate': 4,
+                                'batch_size': 100,
+                                'embedding_layer_dims': [300, 400],
+                                'id_layer_dims': [300, 400],
+                                'img_h': 128,
+                                'img_w': 128,
+                                'lr': 0.0001,
+                                'num_epochs': 1001,
+                                'num_kp': 64,
+                                'num_workers': 0,
+                                'random_affine': False,
+                                'rnn_hidden_dim': 100,
+                                'rnn_num_layers': 2,
+                                'separate_id_prediction': False,
+                                'use_cvae': True,
+                                'use_eye_in_hand': False,
+                                'use_rnn': False,
+                                'use_spatial_softmax': False,
+                                'visual_feature_dimension': 64},
+                      'meta_cvae_cfg': { 'enable': True,
+                                         'kl_coeff': 0.01,
+                                         'latent_dim': 64},
+                      'modality_str': 'dinov2_agentview_eye_in_hand',
+                      'multitask': { 'skip_task_id': [5, 6, 8],
+                                     'task_id': 0,
+                                     'testing_percentage': 1.0,
+                                     'training_task_id': -1},
+                      'record_states': True,
+                      'repr': { 'alpha_kl': 0.05,
+                                'modalities': [ 'agentview',
+                                                'eye_in_hand',
+                                                'proprio'],
+                                'no_skip': True,
+                                'z_dim': 32},
+                      'skill_subgoal_cfg': { 'horizon': 30,
+                                             'subgoal_type': 'linear',
+                                             'use_eye_in_hand': False,
+                                             'use_final_goal': False,
+                                             'use_spatial_softmax': True,
+                                             'visual_feature_dimension': 32},
+                      'skill_training': { 'action_squash': True,
+                                          'activation': 'leaky-relu',
+                                          'affine_translate': 4,
+                                          'agglomoration': {'K': 5},
+                                          'batch_size': 128,
+                                          'data_modality': ['image', 'proprio'],
+                                          'gripper_smoothing': False,
+                                          'img_h': 128,
+                                          'img_w': 128,
+                                          'lr': 0.001,
+                                          'min_lr': 0.0001,
+                                          'no_skip': True,
+                                          'num_epochs': 1001,
+                                          'num_kp': 64,
+                                          'num_workers': 0,
+                                          'policy_layer_dims': [300, 400],
+                                          'policy_type': 'normal_subgoal',
+                                          'random_affine': True,
+                                          'rnn_encoder_mlp_dims': [128, 128],
+                                          'rnn_hidden_dim': 100,
+                                          'rnn_loss_reduction': 'mean',
+                                          'rnn_num_layers': 2,
+                                          'run_idx': 0,
+                                          'state_dim': 37,
+                                          'subtask_id': [],
+                                          'use_changepoint': False,
+                                          'use_eye_in_hand': True,
+                                          'use_gripper': True,
+                                          'use_joints': True,
+                                          'use_rnn': False,
+                                          'visual_feature_dimension': 64},
+                      'use_checkpoint': False,
+                      'verbose': True,
+                      'video': { 'demo_output_dir': 'paper_vis/demo_videos/defaults',
+                                 'dir': '',
+                                 'fps': 60,
+                                 'height': 1024,
+                                 'output_dir': 'paper_vis/videos/defaults',
+                                 'width': 1024}},
+  'task_embedding_format': 'bert',
+  'task_embedding_one_hot_offset': 1,
+  'train': { 'batch_size': 32,
+             'debug': False,
+             'grad_clip': 100.0,
+             'loss_scale': 1.0,
+             'n_epochs': 50,
+             'num_workers': 4,
+             'optimizer': { 'kwargs': { 'betas': [0.9, 0.999],
+                                        'lr': 0.0001,
+                                        'weight_decay': 0.0001},
+                            'name': 'torch.optim.AdamW'},
+             'resume': False,
+             'resume_path': '',
+             'scheduler': { 'kwargs': {'eta_min': 1e-05, 'last_epoch': -1},
+                            'name': 'torch.optim.lr_scheduler.CosineAnnealingLR'},
+             'use_augmentation': True},
+  'use_wandb': True,
+  'wandb_project': 'lifelong learning'}
+'Available algorithms:'
+{ 'agem': <class 'lotus.lifelong.algos.agem.AGEM'>,
+  'er': <class 'lotus.lifelong.algos.er.ER'>,
+  'ewc': <class 'lotus.lifelong.algos.ewc.EWC'>,
+  'metacontroller': <class 'lotus.lifelong.algos.skill.MetaController'>,
+  'multitask': <class 'lotus.lifelong.algos.multitask.Multitask'>,
+  'packnet': <class 'lotus.lifelong.algos.packnet.PackNet'>,
+  'sequential': <class 'lotus.lifelong.algos.base.Sequential'>,
+  'singletask': <class 'lotus.lifelong.algos.single_task.SingleTask'>,
+  'subskill': <class 'lotus.lifelong.algos.skill.SubSkill'>}
+'Available policies:'
+{ 'bcrnnpolicy': <class 'lotus.lifelong.models.bc_rnn_policy.BCRNNPolicy'>,
+  'bctransformerpolicy': <class 'lotus.lifelong.models.bc_transformer_policy.BCTransformerPolicy'>,
+  'bctransformerskillpolicy': <class 'lotus.lifelong.models.bc_transformer_policy.BCTransformerSkillPolicy'>,
+  'bcviltpolicy': <class 'lotus.lifelong.models.bc_vilt_policy.BCViLTPolicy'>}
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: rgb with keys: ['agentview_rgb', 'eye_in_hand_rgb']
+using obs modality: depth with keys: []
+using obs modality: low_dim with keys: ['joint_states', 'gripper_states']
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 2960.91it/s]
+./datasets/libero_goal/open_the_middle_drawer_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3389.61it/s]
+./datasets/libero_goal/put_the_bowl_on_the_stove_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3838.48it/s]
+./datasets/libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3722.84it/s]
+./datasets/libero_goal/open_the_top_drawer_and_put_the_bowl_inside_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3889.52it/s]
+./datasets/libero_goal/put_the_bowl_on_top_of_the_cabinet_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3827.41it/s]
+./datasets/libero_goal/push_the_plate_to_the_front_of_the_stove_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3919.54it/s]
+./datasets/libero_goal/put_the_cream_cheese_in_the_bowl_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3826.01it/s]
+./datasets/libero_goal/turn_on_the_stove_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3992.37it/s]
+./datasets/libero_goal/put_the_bowl_on_the_plate_demo.hdf5
+SequenceDataset: loading dataset into memory...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:00<00:00, 3830.69it/s]
+./datasets/libero_goal/put_the_wine_bottle_on_the_rack_demo.hdf5
+subtasks distance score: 0.1526530612244898
+subtasks distance score: 0.0
+subtasks distance score: 0.48244897959183675
+subtasks distance score: 0.0
+subtasks distance score: 0.0
+subtasks distance score: 0.5428571428571428
+subtasks distance score: 0.04
+subtasks distance score: 0.0
+subtasks distance score: 0.49714285714285716
+/home/pz1004/Workspaces/Lotus/lotus/lifelong/datasets.py:563: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  if 'segmentation' in subtasks_f['subtasks'][key]:
+subtasks distance score: 0.5371428571428571
+train_dataset_id: [0]
+
+=================== Lifelong Benchmark Information  ===================
+ Name: libero_goal
+ # Tasks: 10
+    - Task 1:
+        open the middle drawer of the cabinet
+    - Task 2:
+        put the bowl on the stove
+    - Task 3:
+        put the wine bottle on top of the cabinet
+    - Task 4:
+        open the top drawer and put the bowl inside
+    - Task 5:
+        put the bowl on top of the cabinet
+    - Task 6:
+        push the plate to the front of the stove
+    - Task 7:
+        put the cream cheese in the bowl
+    - Task 8:
+        turn on the stove
+    - Task 9:
+        put the bowl on the plate
+    - Task 10:
+        put the wine bottle on the rack
+=======================================================================
+
+wandb: Currently logged in as: pz1004. Use `wandb login --relogin` to force relogin
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/wandb/util.py:249: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  scope.user = {"email": s.email}
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/wandb/util.py:249: DeprecationWarning: The `Scope.user` setter is deprecated in favor of `Scope.set_user()`.
+  scope.user = {"email": s.email}
+wandb: wandb version 0.21.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.13.1
+wandb: Run data is saved locally in /home/pz1004/Workspaces/Lotus/lotus/wandb/run-20250704_011514-ptj0k341
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run crisp-armadillo-10
+wandb: ⭐️ View project at https://wandb.ai/pz1004/lifelong%20learning
+wandb: 🚀 View run at https://wandb.ai/pz1004/lifelong%20learning/runs/ptj0k341
+Finish loading subtask_0:  292
+Subtask id: 0
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3483.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[info] start training skill 0
+[info] Epoch:   0 | train loss: -15.66 | time: 0.03
+[info] Epoch:   1 | train loss:  6.48 | time: 0.05
+[info] Epoch:   2 | train loss: -5.85 | time: 0.05
+[info] Epoch:   3 | train loss: -7.59 | time: 0.05
+[info] Epoch:   4 | train loss: -10.06 | time: 0.05
+[info] Epoch:   5 | train loss: -11.65 | time: 0.05
+[info] Epoch:   6 | train loss: -12.67 | time: 0.05
+[info] Epoch:   7 | train loss: -13.90 | time: 0.05
+[info] Epoch:   8 | train loss: -14.18 | time: 0.05
+[info] Epoch:   9 | train loss: -14.76 | time: 0.06
+[info] Epoch:  10 | train loss: -14.83 | time: 0.05
+[info] Epoch:  11 | train loss: -15.14 | time: 0.05
+[info] Epoch:  12 | train loss: -15.74 | time: 0.06
+[info] Epoch:  13 | train loss: -15.30 | time: 0.05
+[info] Epoch:  14 | train loss: -15.79 | time: 0.05
+[info] Epoch:  15 | train loss: -16.43 | time: 0.05
+[info] Epoch:  16 | train loss: -15.83 | time: 0.06
+[info] Epoch:  17 | train loss: -16.13 | time: 0.05
+[info] Epoch:  18 | train loss: -16.40 | time: 0.05
+[info] Epoch:  19 | train loss: -16.50 | time: 0.05
+[info] Epoch:  20 | train loss: -16.17 | time: 0.06
+[info] Epoch:  21 | train loss: -16.14 | time: 0.05
+[info] Epoch:  22 | train loss: -16.80 | time: 0.06
+[info] Epoch:  23 | train loss: -17.25 | time: 0.05
+[info] Epoch:  24 | train loss: -16.99 | time: 0.05
+[info] Epoch:  25 | train loss: -16.84 | time: 0.05
+[info] Epoch:  26 | train loss: -17.29 | time: 0.06
+[info] Epoch:  27 | train loss: -17.48 | time: 0.05
+[info] Epoch:  28 | train loss: -16.26 | time: 0.05
+[info] Epoch:  29 | train loss: -17.35 | time: 0.05
+[info] Epoch:  30 | train loss: -17.87 | time: 0.06
+[info] Epoch:  31 | train loss: -17.86 | time: 0.05
+[info] Epoch:  32 | train loss: -18.02 | time: 0.06
+[info] Epoch:  33 | train loss: -17.70 | time: 0.05
+[info] Epoch:  34 | train loss: -16.68 | time: 0.05
+[info] Epoch:  35 | train loss: -17.49 | time: 0.05
+[info] Epoch:  36 | train loss: -17.76 | time: 0.05
+[info] Epoch:  37 | train loss: -18.29 | time: 0.05
+[info] Epoch:  38 | train loss: -18.94 | time: 0.05
+[info] Epoch:  39 | train loss: -18.81 | time: 0.05
+[info] Epoch:  40 | train loss: -18.78 | time: 0.05
+[info] Epoch:  41 | train loss: -18.69 | time: 0.05
+[info] Epoch:  42 | train loss: -18.57 | time: 0.05
+[info] Epoch:  43 | train loss: -18.89 | time: 0.05
+[info] Epoch:  44 | train loss: -19.34 | time: 0.05
+[info] Epoch:  45 | train loss: -19.17 | time: 0.05
+[info] Epoch:  46 | train loss: -19.34 | time: 0.05
+[info] Epoch:  47 | train loss: -19.40 | time: 0.05
+[info] Epoch:  48 | train loss: -19.38 | time: 0.05
+[info] Epoch:  49 | train loss: -19.44 | time: 0.05
+[info] Epoch:  50 | train loss: -19.42 | time: 0.05
+Finish loading subtask_1:  623
+Subtask id: 1
+Finish loading subtask_2:  62
+Subtask id: 2
+Finish loading subtask_3:  30
+Subtask id: 3
+Subtask id: 4
+No Data on Subtask 4
+MetaPolicyDataset:  torch.Size([1003])
+Error executing job with overrides: ['seed=1', 'benchmark_name=libero_goal_exp10', 'skill_learning.exp_name=dinov2_libero_goal_image_only_10', 'policy=bc_transformer_policy', 'lifelong=multitask_skill', 'exp=BUDS-single-er10', 'goal_modality=BUDS', 'pretrain_model_path=experiments/libero_goal_exp9/Multitask_Skill/dinov2_libero_goal_image_only_9_seed1/BUDS-single-er9_run_001']
+Traceback (most recent call last):
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/main.py", line 301, in main
+    meta_policy.load_meta_policy(experiment_dir=cfg.pretrain_model_path)
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/algos/skill.py", line 593, in load_meta_policy
+    self.policy.load_state_dict(torch_load_model(model_checkpoint_name)[0])
+  File "/home/pz1004/Workspaces/Lotus/lotus/lifelong/utils.py", line 86, in torch_load_model
+    model_dict = torch.load(model_path, map_location=map_location)
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/serialization.py", line 791, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/serialization.py", line 271, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/torch/serialization.py", line 252, in __init__
+    super().__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: 'experiments/libero_goal_exp9/Multitask_Skill/dinov2_libero_goal_image_only_9_seed1/BUDS-single-er9_run_001/meta_controller_model_ep50.pth'
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: Skill_Training/skill0_training_loss ▂█▅▄▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▂▂▁▁▁▁▁▁▁▁▁▁▁
+wandb: Skill_Training/skill0_training_time ▁▆▆▆▆▆▆▆▇▇█▆▇█▆▆▇▆▇▆▆▇▆▆▇▇▆▆▆▆▆▆▆▆▆▆▇▆▇▆
+wandb:                 Skill_Training/step ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb: 
+wandb: Run summary:
+wandb: Skill_Training/skill0_training_loss -19.41749
+wandb: Skill_Training/skill0_training_time 0.05123
+wandb:                 Skill_Training/step 50
+wandb: 
+wandb: Synced crisp-armadillo-10: https://wandb.ai/pz1004/lifelong%20learning/runs/ptj0k341
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250704_011514-ptj0k341/logs
