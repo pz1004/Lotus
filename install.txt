@@ -1,0 +1,104 @@
+
+[requirements.txt]
+changed robosuite -> robosuite==1.4.1
+since 1.5.0, single_arm_env.py has been removed from robosuite.environments.manipulation
+
+[datasets]
+LIBERO/libero/datasets
+libero_100 datasets are split into libero_10 and libero_90.
+however, running the script requires libero_100 folder.
+  - [error] [Errno 2] Unable to synchronously open file (unable to open file: name = '/home/pz1004/Workspaces/LIBERO/libero/libero/../datasets/libero_100/KITCHEN_SCENE8_put_both_moka_pots_on_the_stove_demo.hdf5', errno = 2, error message = 'No such file or directory', flags = 0, o_flags = 0)
+so created libero_100 folder and copied all the files in libero_10 and libero_90 into the libero_100 folder
+
+[private macro file warning]
+run the following command.
+python /home/pz1004/anaconda3/envs/lotus/lib/python3.9/site-packages/robosuite/scripts/setup_macros.py
+
+[does not exist warning]
+moved all the files in 'libero' folder to 'LIBERO/libero/libero' folder.
+[Warning]: assets path /home/pz1004/Workspaces/LIBERO/libero/libero/./assets does not exist!
+[Warning]: bddl_files path /home/pz1004/Workspaces/LIBERO/libero/libero/./bddl_files does not exist!
+[Warning]: init_states path /home/pz1004/Workspaces/LIBERO/libero/libero/./init_files does not exist!
+
+[for dinov2 unspuervised skill discovery]
+pip install xformers==0.0.18
+pip install torchvision==0.15.1 torchaudio==2.0.1
+ - xformers requires torch 2.0.0.
+ - torchvision==0.15.1 torchaudio==2.0.1 are compatible versions for torch 2.0.0
+
+
+conda create -n lotus python=3.9.19
+conda activate lotus
+
+git clone -b v1.4.1 https://github.com/ARISE-Initiative/robosuite robosuite-v141
+cd robosuite-v141/
+pip install -e .
+
+cd ..
+git clone https://github.com/UT-Austin-RPL/Lotus
+cd Lotus
+pip install -r requirements.txt
+pip install xformers==0.0.18
+pip install torchvision==0.15.1 torchaudio==2.0.1
+pip install -e .
+ - xformers is required for dinov2 unspuervised skill discovery
+ - previous version installs torch==1.11.0+cu113 but xformers requires torch 2.0.0.
+ - torch 2.0.0 works fine for lotus training
+ - if install xformers prior to requirements, torch 2.0.0 is removed and newer version of torch is installed.
+ - xformers requires torch 2.0.0.
+ - torchvision==0.15.1 torchaudio==2.0.1 are compatible versions for torch 2.0.0
+
+python libero_benchmark_scripts/download_libero_datasets.py
+
+
+
+Order [liber_goal]
+
+move to the directory
+ - cd lotus/skill_learning
+
+1. Encoding Representation
+1.1 modified dinov2_repr.py 
+ - substituted dataset_name_list from libero_object to libero_goal 
+ - pz1004 : copied from train_multimodal.py
+
+1.2 run the command
+ - python multisensory_repr/dinov2_repr.py  --exp-name dinov2_libero_goal_image_only_6 --modality-str dinov2_agentview_eye_in_hand --feature-dim 1536
+    - 'dinov2_libero_goal_image_only_6' is from the skill_policy_libero_goal.sh
+
+2. Hierarchical Agglomerative Clustering
+
+2.1 run the command
+ - python skill_discovery/hierarchical_agglomoration.py exp_name=dinov2_libero_goal_image_only_6 modality_str=dinov2_agentview_eye_in_hand repr.z_dim=1536 agglomoration.dist=cos agglomoration.footprint=global_pooling
+    - 'dinov2_libero_goal_image_only_6' is from the skill_policy_libero_goal.sh
+
+3. Spectral Clustering
+3.1 modified agglomoration_script.py
+ - substituted dataset_name_list from libero_object to libero_goal 
+ - pz1004 : copied from train_multimodal.py and removed ../datasets/ part
+
+3.2 run the command
+ - python skill_discovery/agglomoration_script.py exp_name=dinov2_libero_goal_image_only_6 modality_str=dinov2_agentview_eye_in_hand repr.z_dim=1536 agglomoration.segment_scale=1 agglomoration.min_len_thresh=30 agglomoration.K=2 agglomoration.scale=0.01 agglomoration.dist=cos agglomoration.footprint=global_pooling
+    - 'dinov2_libero_goal_image_only_6' is from the skill_policy_libero_goal.sh
+    - modified the command 
+        - inserted 'agglomoration.footprint=global_pooling' at the end.
+        - to align with Hierarchical Agglomerative Clustering
+
+4. Train
+4.1 move to the directory 'lotus'
+ - cd ..
+
+4.1 modified config.yaml (lotus/configs/config.yaml)
+ - pz1004 : modified to use the dataset in Lotus
+
+4.2 run the command
+ - chmod +x script/skill_policy_libero_goal.sh
+    - give the permission for execution
+
+4.3 run the command
+- ./script/skill_policy_libero_goal.sh
+    - ask to log in to wandb.
+
+
+[to do]
+1. rename folders in results from dinov2_libero_goal_image_only_6_7 to dinov2_libero_goal_image_only_7 for 7 to 10.

@@ -14,9 +14,13 @@ defaults:
 seed: 10000
 use_wandb: true
 wandb_project: "lifelong learning"
-folder: null # use default path
-bddl_folder: null # use default path
-init_states_folder: null # use default path
+# folder: null # use default path
+# bddl_folder: null # use default path
+# init_states_folder: null # use default path
+# pz1004 : modified to use the dataset in Lotus
+folder: './datasets'
+bddl_folder: './libero/bddl_files'
+init_states_folder: './libero/init_files'
 load_previous_model: false
 device: "cuda"
 task_embedding_format: "bert"

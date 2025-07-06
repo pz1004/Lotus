@@ -22,17 +22,30 @@ from PIL import Image
 
 DEL_COST = INS_COST = 1.0
 SUB_COST = 1.0
+# dataset_name_list = [
+#     "libero_object/pick_up_the_alphabet_soup_and_place_it_in_the_basket_demo",
+#     "libero_object/pick_up_the_cream_cheese_and_place_it_in_the_basket_demo",
+#     "libero_object/pick_up_the_salad_dressing_and_place_it_in_the_basket_demo",
+#     "libero_object/pick_up_the_bbq_sauce_and_place_it_in_the_basket_demo",
+#     "libero_object/pick_up_the_ketchup_and_place_it_in_the_basket_demo",
+#     "libero_object/pick_up_the_tomato_sauce_and_place_it_in_the_basket_demo",
+#     "libero_object/pick_up_the_butter_and_place_it_in_the_basket_demo",
+#     "libero_object/pick_up_the_milk_and_place_it_in_the_basket_demo",
+#     "libero_object/pick_up_the_chocolate_pudding_and_place_it_in_the_basket_demo",
+#     "libero_object/pick_up_the_orange_juice_and_place_it_in_the_basket_demo",
+# ]
+# pz1004 : copied from train_multimodal.py and removed ../datasets/ part
 dataset_name_list = [
-    "libero_object/pick_up_the_alphabet_soup_and_place_it_in_the_basket_demo",
-    "libero_object/pick_up_the_cream_cheese_and_place_it_in_the_basket_demo",
-    "libero_object/pick_up_the_salad_dressing_and_place_it_in_the_basket_demo",
-    "libero_object/pick_up_the_bbq_sauce_and_place_it_in_the_basket_demo",
-    "libero_object/pick_up_the_ketchup_and_place_it_in_the_basket_demo",
-    "libero_object/pick_up_the_tomato_sauce_and_place_it_in_the_basket_demo",
-    "libero_object/pick_up_the_butter_and_place_it_in_the_basket_demo",
-    "libero_object/pick_up_the_milk_and_place_it_in_the_basket_demo",
-    "libero_object/pick_up_the_chocolate_pudding_and_place_it_in_the_basket_demo",
-    "libero_object/pick_up_the_orange_juice_and_place_it_in_the_basket_demo",
+    "libero_goal/open_the_middle_drawer_of_the_cabinet_demo",
+    "libero_goal/put_the_bowl_on_the_stove_demo",
+    "libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo",
+    "libero_goal/open_the_top_drawer_and_put_the_bowl_inside_demo",
+    "libero_goal/put_the_bowl_on_top_of_the_cabinet_demo",
+    "libero_goal/push_the_plate_to_the_front_of_the_stove_demo",
+    "libero_goal/put_the_cream_cheese_in_the_bowl_demo",
+    "libero_goal/turn_on_the_stove_demo",
+    "libero_goal/put_the_bowl_on_the_plate_demo",
+    "libero_goal/put_the_wine_bottle_on_the_rack_demo",
 ]
 base_dataset_name_list = dataset_name_list[0:6]
 lifelong_dataset_name_list = dataset_name_list[6:10]
