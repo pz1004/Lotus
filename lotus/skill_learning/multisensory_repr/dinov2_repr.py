@@ -39,17 +39,47 @@ from models.model_utils import safe_cuda
 # ]
 
 # pz1004 : copied from train_multimodal.py
-Dataset_Name_List = [
-    "../datasets/libero_goal/open_the_middle_drawer_of_the_cabinet_demo",
-    "../datasets/libero_goal/put_the_bowl_on_the_stove_demo",
-    "../datasets/libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo",
-    "../datasets/libero_goal/open_the_top_drawer_and_put_the_bowl_inside_demo",
-    "../datasets/libero_goal/put_the_bowl_on_top_of_the_cabinet_demo",
-    "../datasets/libero_goal/push_the_plate_to_the_front_of_the_stove_demo",
-    "../datasets/libero_goal/put_the_cream_cheese_in_the_bowl_demo",
-    "../datasets/libero_goal/turn_on_the_stove_demo",
-    "../datasets/libero_goal/put_the_bowl_on_the_plate_demo",
-    "../datasets/libero_goal/put_the_wine_bottle_on_the_rack_demo",
+# Dataset_Name_List = [
+#     "../datasets/libero_goal/open_the_middle_drawer_of_the_cabinet_demo",
+#     "../datasets/libero_goal/put_the_bowl_on_the_stove_demo",
+#     "../datasets/libero_goal/put_the_wine_bottle_on_top_of_the_cabinet_demo",
+#     "../datasets/libero_goal/open_the_top_drawer_and_put_the_bowl_inside_demo",
+#     "../datasets/libero_goal/put_the_bowl_on_top_of_the_cabinet_demo",
+#     "../datasets/libero_goal/push_the_plate_to_the_front_of_the_stove_demo",
+#     "../datasets/libero_goal/put_the_cream_cheese_in_the_bowl_demo",
+#     "../datasets/libero_goal/turn_on_the_stove_demo",
+#     "../datasets/libero_goal/put_the_bowl_on_the_plate_demo",
+#     "../datasets/libero_goal/put_the_wine_bottle_on_the_rack_demo",
+# ]
+
+# pz1004 : task orders are defined in libero_suite_task_map.py
+import re
+from lotus.libero.benchmark.libero_suite_task_map import libero_task_map
+libero_100 = libero_task_map['libero_100']
+task_orders_25 = [0, 1, 2, 6, 7, 11, 12, 13, 18, 19, 20, 22, 23, 24, 28, 29, 30, 33, 35, 36, 38, 40, 41, 92, 93]
+task_orders_30 = task_orders_25 + [3, 4, 5, 8, 9]
+task_orders_35 = task_orders_30 + [10, 14, 15, 16, 17]
+task_orders_40 = task_orders_35 + [21, 25, 26, 27, 31]
+task_orders_45 = task_orders_40 + [32, 34, 37, 39, 42]
+task_orders_50 = task_orders_45 + [43, 44, 45, 98, 99]
+
+Dataset_Name_List_25 = [
+    f"../datasets/libero_100/{libero_100[i]}_demo" for i in task_orders_25
+]
+Dataset_Name_List_30 = [
+    f"../datasets/libero_100/{libero_100[i]}_demo" for i in task_orders_30
+]
+Dataset_Name_List_35 = [
+    f"../datasets/libero_100/{libero_100[i]}_demo" for i in task_orders_35
+]
+Dataset_Name_List_40 = [
+    f"../datasets/libero_100/{libero_100[i]}_demo" for i in task_orders_40
+]
+Dataset_Name_List_45 = [
+    f"../datasets/libero_100/{libero_100[i]}_demo" for i in task_orders_45
+]
+Dataset_Name_List_50 = [
+    f"../datasets/libero_100/{libero_100[i]}_demo" for i in task_orders_50
 ]
 
 class DinoV2ImageProcessor(object):
@@ -183,6 +213,23 @@ if __name__ == "__main__":
     feature_dim = args.feature_dim
     dinov2 = DinoV2ImageProcessor()
 
+    # pz1004 : added for libero 50
+    dataset_map = {
+        "25": Dataset_Name_List_25,
+        "30": Dataset_Name_List_30,
+        "35": Dataset_Name_List_35,
+        "40": Dataset_Name_List_40,
+        "45": Dataset_Name_List_45,
+        "50": Dataset_Name_List_50,
+    }
+
+    match = re.search(r'(\d+)$', args.exp_name)
+    if not match or match.group(1) not in dataset_map:
+        print(f"Error: Could not determine dataset list from exp_name '{args.exp_name}'. Valid numeric suffixes are: {list(dataset_map.keys())}")
+        sys.exit(1)
+
+    Dataset_Name_List = dataset_map[match.group(1)]
+
     for dataset_name in Dataset_Name_List:
         dataset_hdf5_file = dataset_name + ".hdf5"
         f = h5py.File(dataset_hdf5_file, "r")
@@ -268,7 +315,3 @@ if __name__ == "__main__":
 
         embedding_file.close()
         f.close()
-
-
-    
-
