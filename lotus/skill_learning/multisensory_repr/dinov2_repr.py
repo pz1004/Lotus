@@ -52,6 +52,19 @@ from models.model_utils import safe_cuda
 #     "../datasets/libero_goal/put_the_wine_bottle_on_the_rack_demo",
 # ]
 
+Dataset_Name_List_object = [
+    "../datasets/libero_object/pick_up_the_alphabet_soup_and_place_it_in_the_basket_demo",
+    "../datasets/libero_object/pick_up_the_cream_cheese_and_place_it_in_the_basket_demo",
+    "../datasets/libero_object/pick_up_the_salad_dressing_and_place_it_in_the_basket_demo",
+    "../datasets/libero_object/pick_up_the_bbq_sauce_and_place_it_in_the_basket_demo",
+    "../datasets/libero_object/pick_up_the_ketchup_and_place_it_in_the_basket_demo",
+    "../datasets/libero_object/pick_up_the_tomato_sauce_and_place_it_in_the_basket_demo",
+    "../datasets/libero_object/pick_up_the_butter_and_place_it_in_the_basket_demo",
+    "../datasets/libero_object/pick_up_the_milk_and_place_it_in_the_basket_demo",
+    "../datasets/libero_object/pick_up_the_chocolate_pudding_and_place_it_in_the_basket_demo",
+    "../datasets/libero_object/pick_up_the_orange_juice_and_place_it_in_the_basket_demo",
+]
+
 # pz1004 : task orders are defined in libero_suite_task_map.py
 import re
 from lotus.libero.benchmark.libero_suite_task_map import libero_task_map
@@ -223,12 +236,15 @@ if __name__ == "__main__":
         "50": Dataset_Name_List_50,
     }
 
-    match = re.search(r'(\d+)$', args.exp_name)
-    if not match or match.group(1) not in dataset_map:
-        print(f"Error: Could not determine dataset list from exp_name '{args.exp_name}'. Valid numeric suffixes are: {list(dataset_map.keys())}")
-        sys.exit(1)
-
-    Dataset_Name_List = dataset_map[match.group(1)]
+    # Check if exp_name contains "object"
+    if "object" in args.exp_name:
+        Dataset_Name_List = Dataset_Name_List_object
+    else:
+        match = re.search(r'(\d+)$', args.exp_name)
+        if not match or match.group(1) not in dataset_map:
+            print(f"Error: Could not determine dataset list from exp_name '{args.exp_name}'. Valid numeric suffixes are: {list(dataset_map.keys())}")
+            sys.exit(1)
+        Dataset_Name_List = dataset_map[match.group(1)]
 
     for dataset_name in Dataset_Name_List:
         dataset_hdf5_file = dataset_name + ".hdf5"

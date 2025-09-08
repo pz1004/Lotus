@@ -39,12 +39,14 @@ def main(hydra_cfg):
 
     modality_str = cfg.modality_str
     # cfg.repr.z_dim = 768*2
-
+    
     exp_dir = f"results/{cfg.exp_name}/repr"
     dataset_name_list = []
     for dataset_category in os.listdir(exp_dir):
         dataset_category_path = os.path.join(exp_dir, dataset_category)
-        if os.path.isdir(dataset_category_path) and dataset_category in ['libero_object','libero_spactial','libero_goal', 'libero_10', 'libero_90', 'rw_all']:
+        # pz1004 : added libero_100
+        # if os.path.isdir(dataset_category_path) and dataset_category in ['libero_object','libero_spactial','libero_goal', 'libero_10', 'libero_90', 'rw_all']:
+        if os.path.isdir(dataset_category_path) and dataset_category in ['libero_object','libero_spactial','libero_goal', 'libero_10', 'libero_90', 'rw_all', 'libero_100']:
             for dataset_name in os.listdir(dataset_category_path):
                 dataset_name_path = os.path.join(dataset_category_path, dataset_name)
                 if os.path.isdir(dataset_name_path):

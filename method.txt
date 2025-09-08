@@ -5,9 +5,31 @@
   skill_learning/results 폴더에 "dinov2_libero_50_image_only_gp_K13_2_25" 라는 폴더 그리고 그 하위에
   skill_data 라는 폴더가 있어야 함.
 
+
+cd lotus/skill_learning
+
   skill_learning/results 폴더에 "dinov2_libero_50_image_only_gp_K13_2_25" 
   1. Encoding Representation 를 실행하면 하위에 repr 폴더가 생성됨.
     python multisensory_repr/dinov2_repr.py  --exp-name dinov2_libero_50_image_only_gp_K13_2_25 --modality-str dinov2_agentview_eye_in_hand --feature-dim 1536
-  2. 
+  
+  2. Hierarchical Agglomerative Clustering 를 실행하면 하위에 skill_classification 폴더가 생성됨.
+    hierarchical_agglomoration.py 파일에 48번째 줄에 libero_100 추가해 줌.
+    python skill_discovery/hierarchical_agglomoration.py exp_name=dinov2_libero_50_image_only_gp_K13_2_25 modality_str=dinov2_agentview_eye_in_hand repr.z_dim=1536 agglomoration.dist=cos agglomoration.footprint=global_pooling
+
+  3. Spectral Clustering 를 실행하면 하위에 skill_data 폴더가 생성됨.
+    python skill_discovery/agglomoration_script.py exp_name=dinov2_libero_50_image_only_gp_K13_2_25 modality_str=dinov2_agentview_eye_in_hand repr.z_dim=1536 agglomoration.segment_scale=1 agglomoration.min_len_thresh=30 agglomoration.K=2 agglomoration.scale=0.01 agglomoration.dist=cos
+
 
   - 자동화 방법이 있을 것 같은데...
+
+
+
+
+object
+
+python multisensory_repr/dinov2_repr.py  --exp-name dinov2_libero_object_image_only_6 --modality-str dinov2_agentview_eye_in_hand --feature-dim 1536
+python skill_discovery/hierarchical_agglomoration.py exp_name=dinov2_libero_object_image_only_6 modality_str=dinov2_agentview_eye_in_hand repr.z_dim=1536 agglomoration.dist=cos agglomoration.footprint=global_pooling
+python skill_discovery/agglomoration_script.py exp_name=dinov2_libero_object_image_only_6 modality_str=dinov2_agentview_eye_in_hand repr.z_dim=1536 agglomoration.segment_scale=1 agglomoration.min_len_thresh=30 agglomoration.K=2 agglomoration.scale=0.01 agglomoration.dist=cos agglomoration.footprint=global_pooling
+ - dinov2_libero_object_image_only_6 외에 아래 폴더들이 생성됨.
+ dinov2_libero_object_image_only_6_7, dinov2_libero_object_image_only_6_8
+ dinov2_libero_object_image_only_6_9, dinov2_libero_object_image_only_6_10

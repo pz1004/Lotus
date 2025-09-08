@@ -345,3 +345,6 @@ def save_agglomorative_tree(agglomorative_tree, agentview_images, ep_idx, exp_na
 
         os.makedirs(f"results/{exp_name}/skill_classification/agglomoration_results/{dataset_name}/{footprint_mode}_{dist_mode}_{modality_mode}", exist_ok=True)
         cv2.imwrite(f"results/{exp_name}/skill_classification/agglomoration_results/{dataset_name}/{footprint_mode}_{dist_mode}_{modality_mode}/{ep_idx}.png", image)
+        
+        # pz1004 : RuntimeWarning: More than 20 figures have been opened.
+        plt.close(fig)
